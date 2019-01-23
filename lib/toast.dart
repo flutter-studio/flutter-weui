@@ -12,7 +12,7 @@ class Toast {
     _visible = true;
     showDialog(
         context: context,
-        builder: (BuildContext context) => ToastDialog(
+        builder: (BuildContext context) => _ToastDialog(
               text: text,
             ));
     Future.delayed(duration, () => close(context));
@@ -24,7 +24,7 @@ class Toast {
     _visible = true;
     showDialog(
         context: context,
-        builder: (BuildContext context) => ToastDialog(
+        builder: (BuildContext context) => _ToastDialog(
               text: text,
               loading: true,
             ));
@@ -38,8 +38,8 @@ class Toast {
   }
 }
 
-class ToastDialog extends Dialog {
-  ToastDialog({Key key, this.text, this.loading}) : super(key: key);
+class _ToastDialog extends Dialog {
+  _ToastDialog({Key key, this.text, this.loading}) : super(key: key);
   final String text;
   final bool loading;
 
