@@ -12,3 +12,7 @@ ios/Runner/GeneratedPluginRegistrant.*
 android/
 
 .idea
+
+node_modules/
+
+package-lock.json
