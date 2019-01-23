@@ -1,0 +1,33 @@
+{
+  "name": "flutter_weui",
+  "version": "1.0.0",
+  "description": "A new Flutter package.",
+  "main": "index.js",
+  "directories": {
+    "example": "example",
+    "lib": "lib",
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/flutter-studio/flutter-weui.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/flutter-studio/flutter-weui/issues"
+  },
+  "homepage": "https://github.com/flutter-studio/flutter-weui#readme",
+  "devDependencies": {
+    "cz-conventional-changelog": "^2.1.0"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  }
+}
