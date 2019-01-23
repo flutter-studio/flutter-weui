@@ -1,8 +1,8 @@
 name: flutter_weui
 description: A new Flutter package.
 version: 0.0.1
-author:
-homepage:
+author: flutter-studio<2534290808@qq.com>
+homepage: https://github.com/flutter-studio/flutter-weui
 
 environment:
   sdk: ">=2.1.0 <3.0.0"
@@ -10,7 +10,7 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-
+  smart_color: ^0.2.1
 dev_dependencies:
   flutter_test:
     sdk: flutter
