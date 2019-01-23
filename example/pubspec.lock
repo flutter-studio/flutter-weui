@@ -46,6 +46,13 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.0"
+  flutter_weui:
+    dependency: "direct main"
+    description:
+      path: ".."
+      relative: true
+    source: path
+    version: "0.0.1"
   matcher:
     dependency: transitive
     description:
@@ -67,6 +74,13 @@ packages:
       url: "https://pub.flutter-io.cn"
     source: hosted
     version: "1.6.2"
+  pigment:
+    dependency: transitive
+    description:
+      name: pigment
+      url: "https://pub.flutter-io.cn"
+    source: hosted
+    version: "1.0.3"
   quiver:
     dependency: transitive
     description:
@@ -79,6 +93,13 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.99"
+  smart_color:
+    dependency: transitive
+    description:
+      name: smart_color
+      url: "https://pub.flutter-io.cn"
+    source: hosted
+    version: "0.2.1"
   source_span:
     dependency: transitive
     description:
