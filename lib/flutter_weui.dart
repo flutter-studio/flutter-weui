@@ -5,4 +5,5 @@ export 'cells.dart';
 export 'toast.dart';
 export 'action_sheet.dart';
 export 'picker.dart';
+export 'slider.dart';
 
