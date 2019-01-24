@@ -7,4 +7,5 @@ export 'action_sheet.dart';
 export 'picker.dart';
 export 'slider.dart';
 export 'switch.dart';
+export 'weui_icon.dart';
 
