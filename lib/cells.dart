@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:meta/meta.dart';
 import 'package:flutter/services.dart';
+import 'action_sheet.dart';
 
 class Cells extends StatelessWidget {
   Cells({@required this.children, Key key}) : super(key: key);
@@ -37,7 +38,79 @@ class Cells extends StatelessWidget {
   }
 }
 
-enum KeyBoardType  { text, number, password }
+class CellSelect extends StatefulWidget {
+  CellSelect({Key key, this.label = "label", @required this.options, this.onChanged, this.initialIndex = 0})
+      : assert(options != null),
+        super(key: key);
+  final String label;
+  final List<String> options;
+  final ValueChanged<String> onChanged;
+  final int initialIndex;
+  @override
+  _CellSelectState createState() => _CellSelectState();
+}
+
+class _CellSelectState extends State<CellSelect> {
+  String value;
+
+  _handleTap(BuildContext context) {
+    ActionSheet.show(
+        context: context,
+        data: widget.options,
+        onPress: (detail) {
+          setState(() {
+            value = detail.text;
+          });
+          if (widget.onChanged != null) widget.onChanged(detail.text);
+        });
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    value = widget.options.elementAt(widget.initialIndex);
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: () => _handleTap(context),
+      child: Container(
+        padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 15),
+        color: Colors.white,
+        child: Row(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: <Widget>[
+            SizedBox(
+              child: Text(
+                widget.label,
+                style: TextStyle(
+                  fontSize: 17,
+                ),
+              ),
+              width: 105,
+            ),
+            Expanded(
+              child: Text(
+                value,
+                style: TextStyle(
+                  fontSize: 17,
+                ),
+              ),
+            ),
+            Icon(
+              Icons.chevron_right,
+              color: Color(0xFF888888),
+              size: 20,
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+enum KeyBoardType { text, number, password }
 
 class CellInput extends StatelessWidget {
   CellInput({Key key, this.placeholder, this.label = "label", this.onChanged, this.keyBoardType = KeyBoardType.text}) : super(key: key);
@@ -51,7 +124,6 @@ class CellInput extends StatelessWidget {
   }
 
   TextInputType _getKeyBorderType() {
-
     Map<KeyBoardType, TextInputType> map = const {
       KeyBoardType.text: TextInputType.text,
       KeyBoardType.number: TextInputType.number,
@@ -64,6 +136,7 @@ class CellInput extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 15),
+      color: Colors.white,
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: <Widget>[
