@@ -26,6 +26,7 @@ class ActionSheet {
             text: data.elementAt(i),
             onPressed: () {
               if (onPress != null) onPress(ActionSheetPressDetails(index: i, text: data.elementAt(i)));
+              Navigator.of(context).pop();
             },
           ));
       if (i != 0) widgets.insert(0, Divider(height: 1 / MediaQuery.of(context).devicePixelRatio));
