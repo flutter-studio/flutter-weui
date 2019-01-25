@@ -9,8 +9,13 @@ class Cells extends StatelessWidget {
   ///插入分隔线
   _insertDivider(BuildContext context) {
     List<Widget> newChildren = children;
-    for (int i = children.length -1; i > 0; i--) {
-      newChildren.insert(i, Divider(height: 1/MediaQuery.of(context).devicePixelRatio,indent: 15,));
+    for (int i = children.length - 1; i > 0; i--) {
+      newChildren.insert(
+          i,
+          Divider(
+            height: 1 / MediaQuery.of(context).devicePixelRatio,
+            indent: 15,
+          ));
     }
     return newChildren;
   }
@@ -32,8 +37,65 @@ class Cells extends StatelessWidget {
   }
 }
 
+enum KeyBoardType  { text, number, password }
+
+class CellInput extends StatelessWidget {
+  CellInput({Key key, this.placeholder, this.label = "label", this.onChanged, this.keyBoardType = KeyBoardType.text}) : super(key: key);
+  final String placeholder;
+  final String label;
+  final ValueChanged<String> onChanged;
+  final KeyBoardType keyBoardType;
+
+  _handleChanged(value) {
+    if (onChanged != null) onChanged(value);
+  }
+
+  TextInputType _getKeyBorderType() {
+
+    Map<KeyBoardType, TextInputType> map = const {
+      KeyBoardType.text: TextInputType.text,
+      KeyBoardType.number: TextInputType.number,
+      KeyBoardType.password: TextInputType.text
+    };
+    return map[keyBoardType];
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 15),
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: <Widget>[
+          SizedBox(
+            child: Text(
+              label,
+              style: TextStyle(
+                fontSize: 17,
+              ),
+            ),
+            width: 105,
+          ),
+          Expanded(
+            child: TextField(
+              obscureText: keyBoardType == KeyBoardType.password,
+              onChanged: _handleChanged,
+              keyboardType: _getKeyBorderType(),
+              style: TextStyle(
+                fontSize: 17,
+                color: Colors.black,
+              ),
+              decoration: InputDecoration(border: InputBorder.none, hintText: placeholder, contentPadding: const EdgeInsets.all(0)),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
 class Cell extends StatefulWidget {
-  Cell({this.title = "", Key key, this.secondaryText = "", this.banner, this.access = false, this.onPressed,this.radio,this.checkBox}) : super(key: key);
+  Cell({this.title = "", Key key, this.secondaryText = "", this.banner, this.access = false, this.onPressed, this.radio, this.checkBox}) : super(key: key);
   final String title;
   final String secondaryText;
   final Widget banner;
