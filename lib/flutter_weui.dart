@@ -9,3 +9,4 @@ export 'slider.dart';
 export 'switch.dart';
 export 'weui_icon.dart';
 export 'load_more.dart';
+export 'dialog.dart';
