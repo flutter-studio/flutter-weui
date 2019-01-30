@@ -2,11 +2,10 @@ import 'package:flutter/cupertino.dart';
 
 class WSwitch extends StatefulWidget {
   const WSwitch({Key key, @required this.onChanged, this.activeColor = const Color(0xFF1AAD19)}) : super(key: key);
-  final Function onChanged;
+  final ValueChanged<bool> onChanged;
   final Color activeColor;
   @override
   State<StatefulWidget> createState() {
-    // TODO: implement createState
     return _Switch();
   }
 }
