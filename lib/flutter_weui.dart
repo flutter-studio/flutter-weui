@@ -14,3 +14,4 @@ export 'touchable.dart';
 export 'media_box.dart';
 export 'panel.dart';
 export 'footer.dart';
+export 'article.dart';
