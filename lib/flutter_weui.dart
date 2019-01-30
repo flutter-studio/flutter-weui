@@ -12,3 +12,4 @@ export 'load_more.dart';
 export 'dialog.dart';
 export 'touchable.dart';
 export 'media_box.dart';
+export 'panel.dart';
