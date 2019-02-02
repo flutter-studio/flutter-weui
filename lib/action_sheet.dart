@@ -92,7 +92,7 @@ class __CellState extends State<_Cell> {
           children: <Widget>[
             Text(
               widget.text,
-              style: TextStyle(fontSize: 18),
+              style: TextStyle(fontSize: 18,color: Color(0xFF151515),),
             )
           ],
         ),
