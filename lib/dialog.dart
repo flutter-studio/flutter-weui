@@ -25,7 +25,7 @@ class _AndroidDialog extends StatelessWidget {
       ),
       actions: actions
           .map((action) => FlatButton(
-                child: Text(action.text style: TextStyle(color: Colors.yellow),),
+                child: Text(action.text,style: TextStyle(color: Colors.yellow),),
                 onPressed: () {
                   Navigator.pop(context);
                   if (action.onPressed != null) action.onPressed();
@@ -51,7 +51,7 @@ class _IosDialog extends StatelessWidget {
         actions: actions
             .map(
               (action) => CupertinoDialogAction(
-                    child: Text(action.text style: TextStyle(color: Colors.blue),),
+                    child: Text(action.text,style: TextStyle(color: Colors.blue),),
                     isDefaultAction: true,
                     onPressed: () {
                       Navigator.pop(context);
