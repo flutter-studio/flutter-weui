@@ -51,7 +51,7 @@ class _IosDialog extends StatelessWidget {
         actions: actions
             .map(
               (action) => CupertinoDialogAction(
-                    child: Text(action.text,style: TextStyle(color: Color(0xFF4CAF50)),),
+                    child: Text(action.text,style: TextStyle(color: Color(0xFF151515)),),
                     isDefaultAction: true,
                     onPressed: () {
                       Navigator.pop(context);
