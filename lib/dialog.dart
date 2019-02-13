@@ -26,6 +26,7 @@ class _AndroidDialog extends StatelessWidget {
       actions: actions
           .map((action) => FlatButton(
                 child: Text(action.text),
+                highlightColor: Color(0xFFDEDEDE),
                 onPressed: () {
                   Navigator.pop(context);
                   if (action.onPressed != null) action.onPressed();
@@ -44,7 +45,6 @@ class _IosDialog extends StatelessWidget {
   final List<DialogActions> actions;
   @override
   Widget build(BuildContext context) {
-    // TODO: implement build
     return CupertinoAlertDialog(
         title: title != null ? Text(title) : null,
         content: Text(content),
