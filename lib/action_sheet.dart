@@ -13,16 +13,22 @@ class ActionSheetPressDetails {
 
 typedef ActionSheetPressVoidCallBack = void Function(ActionSheetPressDetails details);
 
-
 ///展示手机action
 class ActionSheet {
   ///展示ActionSheet
-  static show({BuildContext context, List<String> data, ActionSheetPressVoidCallBack onPress}) {
+  static show({
+    BuildContext context,
+    List<String> data,
+    ActionSheetPressVoidCallBack onPress,
+    Color containerColor = const Color(0xEFEFF4),
+    Color textColor = Colors.black,
+  }) {
     List<Widget> widgets = List<Widget>();
     for (int i = data.length - 1; i >= 0; i--) {
       widgets.insert(
           0,
           _Cell(
+            textColor: textColor,
             text: data.elementAt(i),
             onPressed: () {
               if (onPress != null) onPress(ActionSheetPressDetails(index: i, text: data.elementAt(i)));
@@ -34,6 +40,7 @@ class ActionSheet {
     widgets.add(Padding(
       padding: const EdgeInsets.only(top: 6),
       child: _Cell(
+        textColor: textColor,
         text: "取消",
         onPressed: () => Navigator.of(context).pop(),
       ),
@@ -42,7 +49,7 @@ class ActionSheet {
         context: context,
         builder: (BuildContext context) {
           return Container(
-            color: Color(0xEFEFF4),
+            color: containerColor,
             child: Column(
               mainAxisSize: MainAxisSize.min,
               children: widgets.toList(),
@@ -53,10 +60,11 @@ class ActionSheet {
 }
 
 class _Cell extends StatefulWidget {
-  _Cell({Key key, this.text, this.onPressed}) : super(key: key);
+  _Cell({Key key, this.text, this.onPressed,this.textColor}) : super(key: key);
 
   final String text;
   final VoidCallback onPressed;
+  final Color textColor;
 
   @override
   __CellState createState() => __CellState();
@@ -92,7 +100,7 @@ class __CellState extends State<_Cell> {
           children: <Widget>[
             Text(
               widget.text,
-              style: TextStyle(fontSize: 18),
+              style: TextStyle(fontSize: 18, color: widget.textColor),
             )
           ],
         ),
