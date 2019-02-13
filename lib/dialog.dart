@@ -1,10 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 
+class DialogBtnColor {
+  static const Color btnDefault = const Color(0xff353535);
+  static const Color btnPrimary = const Color(0xff09bb07);
+}
+
 class DialogActions {
-  DialogActions({this.text, this.onPressed});
+  DialogActions({this.text, this.onPressed, this.color = DialogBtnColor.btnPrimary});
   final String text;
   final VoidCallback onPressed;
+  final Color color;
 }
 
 class _AndroidDialog extends StatelessWidget {
@@ -25,7 +31,10 @@ class _AndroidDialog extends StatelessWidget {
       ),
       actions: actions
           .map((action) => FlatButton(
-                child: Text(action.text),
+                child: Text(
+                  action.text,
+                  style: TextStyle(color: action.color),
+                ),
                 highlightColor: Color(0xFFDEDEDE),
                 onPressed: () {
                   Navigator.pop(context);
@@ -51,7 +60,10 @@ class _IosDialog extends StatelessWidget {
         actions: actions
             .map(
               (action) => CupertinoDialogAction(
-                    child: Text(action.text),
+                    child: Text(
+                      action.text,
+                      style: TextStyle(color: action.color),
+                    ),
                     isDefaultAction: true,
                     onPressed: () {
                       Navigator.pop(context);
