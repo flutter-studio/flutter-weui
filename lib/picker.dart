@@ -14,6 +14,7 @@ class PickerItemDetails {
 
 /// picker组件
 class Picker {
+
   /// 展示picker组件
   static show(BuildContext context, List<String> data, {ValueChanged<PickerItemDetails> onOk, int initialItem = 0}) {
     showModalBottomSheet(
@@ -25,6 +26,14 @@ class Picker {
             onOk: onOk,
           );
         });
+  }
+}
+
+class DatePicker {
+  static show(BuildContext context){
+    showModalBottomSheet(context: context, builder: (_){
+      return CupertinoDatePicker(onDateTimeChanged: (dateTime){},initialDateTime: DateTime.now() ,mode: CupertinoDatePickerMode.date,);
+    });
   }
 }
 
