@@ -9,7 +9,8 @@ ios/.generated/
 ios/Flutter/Generated.xcconfig
 ios/Runner/GeneratedPluginRegistrant.*
 
-android/
+**/android/local.properties
+**/android/**/GeneratedPluginRegistrant.java
 
 .idea
 
