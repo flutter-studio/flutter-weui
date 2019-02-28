@@ -1,14 +1,30 @@
+English | [简体中文](./README_zh-CN.md)
+
 # flutter_weui
 
-A new Flutter package.
+[![pub package](https://img.shields.io/pub/v/flutter_weui.svg)](https://pub.dartlang.org/packages/fluter_weui)
 
-## Getting Started
+A flutter UI plugin package for WEUI ,Including components such as button、cell、dialog、 toast、article、actionsheet、icon.
 
-This project is a starting point for a Dart
-[package](https://flutter.io/developing-packages/),
-a library module containing code that can be shared easily across
-multiple Flutter or Dart projects.
+## Usage
 
-For help getting started with Flutter, view our 
-[online documentation](https://flutter.io/docs), which offers tutorials, 
-samples, guidance on mobile development, and a full API reference.
+To use this plugin, add `flutter_weui` as a [dependency in your pubspec.yaml file](https://flutter.io/platform-plugins/).
+
+# Widgets
+
+- [`Button`](https://github.com/flutter-studio/flutter-weui/blob/master/example/lib/button_example.dart)
+- [`ActionSheet`]()
+- [`Article`]()
+- [`Cell`]()
+- [`Dialog`]()
+- [`Footer`]()
+- [`LoadMore`]()
+- [`MediaBox`]()
+- [`Panel`]()
+- [`Picker`]()
+- [`Slider`]()
+- [`Switch`]()
+- [`Toast`]()
+- [`TouchableHighlight`]()
+- [`TouchableOpacity`]()
+
