@@ -19,7 +19,7 @@ To use this plugin, add `flutter_weui` as a [dependency in your pubspec.yaml fil
 - [`Dialog`](https://github.com/flutter-studio/flutter-weui/blob/master/example/lib/dialog_example.dart)
 - [`Footer`](https://github.com/flutter-studio/flutter-weui/blob/master/example/lib/footer_example.dart)
 - [`LoadMore`](https://github.com/flutter-studio/flutter-weui/blob/master/example/lib/load_more_example.dart)
-- [`MediaBox`]()
+- [`MediaBox`](https://github.com/flutter-studio/flutter-weui/blob/master/example/lib/media_box_example.dart)
 - [`Panel`]()
 - [`Picker`]()
 - [`Slider`]()
