@@ -73,11 +73,18 @@ class _TouchableOpacityState extends State<TouchableOpacity> {
     if (widget.onPressed != null) widget.onPressed();
   }
 
+  _onTapCancel(){
+    setState(() {
+      opacity = 1;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTapDown: this._onTapDown,
       onTapUp: this._onTapUp,
+      onTapCancel: this._onTapCancel,
       child: Opacity(
         opacity: opacity,
         child: widget.child,
