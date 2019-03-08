@@ -26,11 +26,18 @@ class _TouchableHighlightState extends State<TouchableHighlight> {
     if (widget.onPressed != null) widget.onPressed();
   }
 
+  _onTapCancel(){
+    setState(() {
+      bg = Color(0xFFFFFFFF);
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTapDown: this._onTapDown,
       onTapUp: this._onTapUp,
+      onTapCancel: this._onTapCancel,
       child: Container(
         color: bg,
         child: widget.child,
