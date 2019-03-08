@@ -54,7 +54,7 @@ class _CellSelectState extends State<CellSelect> {
 
   _handleTap(BuildContext context) {
     ActionSheet.show(
-        context: context,
+        context,
         data: widget.options,
         onPress: (detail) {
           setState(() {

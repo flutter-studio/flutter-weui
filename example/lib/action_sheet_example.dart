@@ -7,7 +7,7 @@ class ActionSheetExample extends StatelessWidget {
       appBar: AppBar(title: Text("ActionSheet"),),
       body: Center(
         child: FlatButton(onPressed: (){
-          ActionSheet.show(context: context,data:["Item1","Item2","Item3"]);
+          ActionSheet.show(context,data:["Item1","Item2","Item3"]);
         }, child: Text("ActionSheet")),
       ),
     );

@@ -36,7 +36,7 @@ class CellExample extends StatelessWidget {
             secondaryText: "说明文字",
             onPressed: () {
               ActionSheet.show(
-                  context: context,
+                  context,
                   data: ["1", "3", "sdfs"],
                   onPress: (details) {
                     print(details.toString());

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 class ActionSheetPressDetails {
   ActionSheetPressDetails({this.index, this.text});
+
   final int index;
   final String text;
 
@@ -16,8 +17,8 @@ typedef ActionSheetPressVoidCallBack = void Function(ActionSheetPressDetails det
 ///展示手机action
 class ActionSheet {
   ///展示ActionSheet
-  static show({
-    BuildContext context,
+  static show(
+    BuildContext context, {
     List<String> data,
     ActionSheetPressVoidCallBack onPress,
     Color containerColor = const Color(0xEFEFF4),
@@ -60,7 +61,7 @@ class ActionSheet {
 }
 
 class _Cell extends StatefulWidget {
-  _Cell({Key key, this.text, this.onPressed,this.textColor}) : super(key: key);
+  _Cell({Key key, this.text, this.onPressed, this.textColor}) : super(key: key);
 
   final String text;
   final VoidCallback onPressed;
