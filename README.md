@@ -23,8 +23,8 @@ To use this plugin, add `flutter_weui` as a [dependency in your pubspec.yaml fil
 - [`Panel`](https://github.com/flutter-studio/flutter-weui/blob/master/example/lib/panel_example.dart)
 - [`Picker`](https://github.com/flutter-studio/flutter-weui/blob/master/example/lib/picker_example.dart)
 - [`Slider`](https://github.com/flutter-studio/flutter-weui/blob/master/example/lib/slider_example.dart)
-- [`Switch`]()
-- [`Toast`]()
-- [`TouchableHighlight`]()
-- [`TouchableOpacity`]()
+- [`Switch`](https://github.com/flutter-studio/flutter-weui/blob/master/example/lib/slider_example.dart)
+- [`Toast`](https://github.com/flutter-studio/flutter-weui/blob/master/example/lib/slider_example.dart)
+- [`TouchableHighlight`](https://github.com/flutter-studio/flutter-weui/blob/master/example/lib/slider_example.dart)
+- [`TouchableOpacity`](https://github.com/flutter-studio/flutter-weui/blob/master/example/lib/slider_example.dart)
 
