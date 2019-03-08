@@ -19,7 +19,7 @@ class Panel extends StatelessWidget {
           Offstage(
             child: Container(
               padding: const EdgeInsets.only(top: 14, right: 15, bottom: 10, left: 15),
-              child: Text(title, style: titleStyle),
+              child: Text(title??"", style: titleStyle),
             ),
             offstage: title == null,
           ),
