@@ -13,7 +13,7 @@ To use this plugin, add `flutter_weui` as a [dependency in your pubspec.yaml fil
 # Widgets
 
 - [`Button`](https://github.com/flutter-studio/flutter-weui/blob/master/example/lib/button_example.dart)
-- [`ActionSheet`]()
+- [`ActionSheet`](https://github.com/flutter-studio/flutter-weui/blob/master/example/lib/action_sheet_example.dart)
 - [`Article`]()
 - [`Cell`]()
 - [`Dialog`]()
