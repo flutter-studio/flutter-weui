@@ -22,7 +22,7 @@
 - [`MediaBox`](https://github.com/flutter-studio/flutter-weui/blob/master/example/lib/media_box_example.dart)
 - [`Panel`](https://github.com/flutter-studio/flutter-weui/blob/master/example/lib/panel_example.dart)
 - [`Picker`](https://github.com/flutter-studio/flutter-weui/blob/master/example/lib/picker_example.dart)
-- [`Slider`]()
+- [`Slider`](https://github.com/flutter-studio/flutter-weui/blob/master/example/lib/slider_example.dart)
 - [`Switch`]()
 - [`Toast`]()
 - [`TouchableHighlight`]()
