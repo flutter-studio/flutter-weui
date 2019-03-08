@@ -21,7 +21,7 @@
 - [`LoadMore`](https://github.com/flutter-studio/flutter-weui/blob/master/example/lib/load_more_example.dart)
 - [`MediaBox`](https://github.com/flutter-studio/flutter-weui/blob/master/example/lib/media_box_example.dart)
 - [`Panel`](https://github.com/flutter-studio/flutter-weui/blob/master/example/lib/panel_example.dart)
-- [`Picker`]()
+- [`Picker`](https://github.com/flutter-studio/flutter-weui/blob/master/example/lib/picker_example.dart)
 - [`Slider`]()
 - [`Switch`]()
 - [`Toast`]()
