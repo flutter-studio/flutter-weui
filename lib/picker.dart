@@ -16,7 +16,7 @@ class PickerItemDetails {
 class Picker {
 
   /// 展示picker组件
-  static show(BuildContext context, List<String> data, {ValueChanged<PickerItemDetails> onOk, int initialItem = 0}) {
+  static show(BuildContext context,{List<String> data, ValueChanged<PickerItemDetails> onOk, int initialItem = 0}) {
     showModalBottomSheet(
         context: context,
         builder: (_) {
