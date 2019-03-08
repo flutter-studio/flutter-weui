@@ -15,7 +15,7 @@ To use this plugin, add `flutter_weui` as a [dependency in your pubspec.yaml fil
 - [`Button`](https://github.com/flutter-studio/flutter-weui/blob/master/example/lib/button_example.dart)
 - [`ActionSheet`](https://github.com/flutter-studio/flutter-weui/blob/master/example/lib/action_sheet_example.dart)
 - [`Article`](https://github.com/flutter-studio/flutter-weui/blob/master/example/lib/article_example.dart)
-- [`Cell`]()
+- [`Cell`](https://github.com/flutter-studio/flutter-weui/blob/master/example/lib/cell_example.dart)
 - [`Dialog`]()
 - [`Footer`]()
 - [`LoadMore`]()
