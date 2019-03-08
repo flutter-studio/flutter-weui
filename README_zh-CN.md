@@ -18,7 +18,7 @@
 - [`Cell`](https://github.com/flutter-studio/flutter-weui/blob/master/example/lib/cell_example.dart)
 - [`Dialog`](https://github.com/flutter-studio/flutter-weui/blob/master/example/lib/dialog_example.dart)
 - [`Footer`](https://github.com/flutter-studio/flutter-weui/blob/master/example/lib/footer_example.dart)
-- [`LoadMore`]()
+- [`LoadMore`](https://github.com/flutter-studio/flutter-weui/blob/master/example/lib/load_more_example.dart)
 - [`MediaBox`]()
 - [`Panel`]()
 - [`Picker`]()
