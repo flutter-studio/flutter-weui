@@ -58,33 +58,5 @@ class LoadMore extends StatelessWidget {
         )
       ],
     );
-    // TODO: implement build
-    return Container(
-      child: Row(
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: <Widget>[
-          Expanded(
-            child: Text(""),
-            flex: 4,
-          ),
-          Expanded(
-            flex: 12,
-            child: Row(
-              children: <Widget>[
-                Expanded(child: Divider()),
-                Row(
-                  children: <Widget>[CupertinoActivityIndicator(), Text("正在加载")],
-                ),
-                Expanded(child: Divider()),
-              ],
-            ),
-          ),
-          Expanded(
-            child: Text(""),
-            flex: 4,
-          )
-        ],
-      ),
-    );
   }
 }
