@@ -20,7 +20,7 @@ class WeuiIcon extends StatelessWidget {
   final WeuiIconType type;
   final bool msg;
   final Color color;
-  Map<WeuiIconType, String> iconMap = const {
+  final Map<WeuiIconType, String> iconMap = const {
     WeuiIconType.success: "\u{EA06}",
     WeuiIconType.warn: "\u{EA0B}",
     WeuiIconType.info: "\u{EA03}",
