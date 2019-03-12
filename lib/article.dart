@@ -73,6 +73,7 @@ class Article extends StatelessWidget {
     );
   }
 }
+
 class Section extends StatelessWidget {
   Section({Key key, this.children}) : super(key: key);
   final List<Widget> children;
@@ -87,5 +88,3 @@ class Section extends StatelessWidget {
     );
   }
 }
-
-

@@ -10,14 +10,14 @@ enum ButtonType {
 }
 
 class Button extends StatefulWidget {
-  Button({Key key, this.type = ButtonType.btnDefault, this.disabled, this.onPressed, this.loading,this.text = "button"}) : super(key: key);
+  Button({Key key, this.type = ButtonType.btnDefault, this.disabled, this.onPressed, this.loading, this.text = "button"}) : super(key: key);
 
   /// 按钮类型
   final ButtonType type; //按钮类型
   final bool disabled; //是否可用
   final VoidCallback onPressed; //按下时进行触发
   final bool loading; //是否加载中
-  final String text;//按钮上的文字
+  final String text; //按钮上的文字
   @override
   State<StatefulWidget> createState() => _Button();
 }
@@ -75,9 +75,8 @@ class _Button extends State<Button> {
   double wuiBtnMiniFontSize = 13;
   double wuiBtnMiniHeight = 2.3;
 
-
   Color wuiBtnPlainPrimaryColor = SmartColor.parse("rgba(26,173,25,1)");
-  Color wuiBtnPlainPrimaryBorderColor  = SmartColor.parse("rgba(26,173,25,1)");
+  Color wuiBtnPlainPrimaryBorderColor = SmartColor.parse("rgba(26,173,25,1)");
   Color wuiBtnPlainPrimaryActiveColor = SmartColor.parse("rgba(26,173,25,.6)");
   Color wuiBtnPlainPrimaryActiveBorderColor = SmartColor.parse("rgba(26,173,25,.6)");
 
@@ -114,7 +113,7 @@ class _Button extends State<Button> {
   }
 
   _onTapDown(e) {
-    if (widget.disabled == true || widget.loading == true ) return;
+    if (widget.disabled == true || widget.loading == true) return;
     setState(() {
       fontColor = buttonColor.activeFontColor;
       btnColor = buttonColor.activeBg;

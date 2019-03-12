@@ -40,12 +40,12 @@ class LoadMore extends StatelessWidget {
                             width: 4,
                             height: 4,
                             child: Text(""),
-                            decoration: BoxDecoration(
-                              color: Color(0xFFE5E5E5),
-                              borderRadius: BorderRadius.all(Radius.circular(2))
-                            ),
+                            decoration: BoxDecoration(color: Color(0xFFE5E5E5), borderRadius: BorderRadius.all(Radius.circular(2))),
                           )
-                        : Text(type == LoadType.loading ? "正在加载" : "暂无数据",style: TextStyle(fontSize: 14),),
+                        : Text(
+                            type == LoadType.loading ? "正在加载" : "暂无数据",
+                            style: TextStyle(fontSize: 14),
+                          ),
                   ],
                 ),
               ),

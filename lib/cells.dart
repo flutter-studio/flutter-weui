@@ -53,15 +53,12 @@ class _CellSelectState extends State<CellSelect> {
   String value;
 
   _handleTap(BuildContext context) {
-    ActionSheet.show(
-        context,
-        data: widget.options,
-        onPress: (detail) {
-          setState(() {
-            value = detail.text;
-          });
-          if (widget.onChanged != null) widget.onChanged(detail.text);
-        });
+    ActionSheet.show(context, data: widget.options, onPress: (detail) {
+      setState(() {
+        value = detail.text;
+      });
+      if (widget.onChanged != null) widget.onChanged(detail.text);
+    });
   }
 
   @override

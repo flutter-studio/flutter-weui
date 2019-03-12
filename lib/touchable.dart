@@ -26,7 +26,7 @@ class _TouchableHighlightState extends State<TouchableHighlight> {
     if (widget.onPressed != null) widget.onPressed();
   }
 
-  _onTapCancel(){
+  _onTapCancel() {
     setState(() {
       bg = Color(0xFFFFFFFF);
     });
@@ -73,7 +73,7 @@ class _TouchableOpacityState extends State<TouchableOpacity> {
     if (widget.onPressed != null) widget.onPressed();
   }
 
-  _onTapCancel(){
+  _onTapCancel() {
     setState(() {
       opacity = 1;
     });

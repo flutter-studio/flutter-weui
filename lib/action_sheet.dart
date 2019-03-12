@@ -12,7 +12,8 @@ class ActionSheetPressDetails {
   }
 }
 
-typedef ActionSheetPressVoidCallBack = void Function(ActionSheetPressDetails details);
+typedef ActionSheetPressVoidCallBack = void Function(
+    ActionSheetPressDetails details);
 
 ///展示手机action
 class ActionSheet {
@@ -32,11 +33,15 @@ class ActionSheet {
             textColor: textColor,
             text: data.elementAt(i),
             onPressed: () {
-              if (onPress != null) onPress(ActionSheetPressDetails(index: i, text: data.elementAt(i)));
+              if (onPress != null)
+                onPress(
+                    ActionSheetPressDetails(index: i, text: data.elementAt(i)));
               Navigator.of(context).pop();
             },
           ));
-      if (i != 0) widgets.insert(0, Divider(height: 1 / MediaQuery.of(context).devicePixelRatio));
+      if (i != 0)
+        widgets.insert(
+            0, Divider(height: 1 / MediaQuery.of(context).devicePixelRatio));
     }
     widgets.add(Padding(
       padding: const EdgeInsets.only(top: 6),

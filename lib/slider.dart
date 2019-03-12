@@ -2,7 +2,15 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class WSlider extends StatefulWidget {
-  WSlider({Key key, this.onChanged, this.min = 0, this.max = 10, this.step = 0, this.activeColor = const Color(0xFF1AAD19), this.showValue = false,this.defaultValue})
+  WSlider(
+      {Key key,
+      this.onChanged,
+      this.min = 0,
+      this.max = 10,
+      this.step = 0,
+      this.activeColor = const Color(0xFF1AAD19),
+      this.showValue = false,
+      this.defaultValue})
       : super(key: key);
 
   final ValueChanged<double> onChanged;
@@ -17,7 +25,7 @@ class WSlider extends StatefulWidget {
 }
 
 class _SliderState extends State<WSlider> {
-  double value ;
+  double value;
 
   handleChanged(newValue) {
     if (widget.onChanged != null) widget.onChanged(newValue);
@@ -27,7 +35,7 @@ class _SliderState extends State<WSlider> {
   void initState() {
     // TODO: implement initState
     super.initState();
-    value = widget.defaultValue??widget.min;
+    value = widget.defaultValue ?? widget.min;
   }
 
   @override
