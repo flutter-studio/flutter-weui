@@ -15,11 +15,12 @@ enum WeuiIconType {
 }
 
 class WeuiIcon extends StatelessWidget {
-  WeuiIcon({Key key, this.type, this.msg, this.color = const Color(0xFF09BB07)}) : super(key: key);
+  WeuiIcon({Key key, this.type, this.msg, this.color = const Color(0xFF09BB07), this.size}) : super(key: key);
 
   final WeuiIconType type;
   final bool msg;
   final Color color;
+  final double size;
   final Map<WeuiIconType, String> iconMap = const {
     WeuiIconType.success: "\u{EA06}",
     WeuiIconType.warn: "\u{EA0B}",
@@ -38,7 +39,7 @@ class WeuiIcon extends StatelessWidget {
     return Text(
       iconMap[type],
       style: TextStyle(
-        fontSize: msg ? 93 : 23,
+        fontSize: size ?? (msg ? 93 : 23),
         package: "flutter_weui",
         fontFamily: "WeuiIcon",
         color: color,
