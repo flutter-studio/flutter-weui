@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'action_sheet.dart';
+import 'weui_icon.dart';
 
 class Cells extends StatelessWidget {
   Cells({@required this.children, Key key}) : super(key: key);
@@ -164,7 +165,8 @@ class CellInput extends StatelessWidget {
 }
 
 class Cell extends StatefulWidget {
-  Cell({this.title = "", Key key, this.secondaryText = "", this.banner, this.access = false, this.onPressed, this.radio, this.checkBox}) : super(key: key);
+  Cell({this.title = "", Key key, this.secondaryText = "", this.banner, this.access = false, this.onPressed, this.radio, this.checkBox, this.checked = false})
+      : super(key: key);
   final String title;
   final String secondaryText;
   final Widget banner;
@@ -172,6 +174,9 @@ class Cell extends StatefulWidget {
   final VoidCallback onPressed;
   final bool radio;
   final bool checkBox;
+  final bool checked;
+
+  ///只在checkBox == true || radio == true时有效
   @override
   State<StatefulWidget> createState() => _Cell();
 }
@@ -194,11 +199,18 @@ class _Cell extends State<Cell> {
     if (widget.onPressed != null) widget.onPressed();
   }
 
+  _onTapCancel() {
+    setState(() {
+      bg = Color(0xFFFFFFFF);
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTapDown: this._onTapDown,
       onTapUp: this._onTapUp,
+      onTapCancel: this._onTapCancel,
       child: Container(
         padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 15),
         color: bg,
@@ -206,10 +218,20 @@ class _Cell extends State<Cell> {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
             Offstage(
-              child: Icon(
-                Icons.check_circle,
-                color: Color(0xFF1AAD19),
-                size: 20,
+              child: Container(
+                margin: const EdgeInsets.only(right: 5),
+                child: WeuiIcon(
+                  type: WeuiIconType.success,
+                  color: widget.checked == true ? Color(0xFF1AAD19) : Color(0xFFFFFFFF),
+                  size: 20,
+                ),
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.all(Radius.circular(10)),
+                  border: Border.all(
+                    width: 1,
+                    color: Color(0xCCCCCCCC),
+                  ),
+                ),
               ),
               offstage: widget.checkBox != true,
             ),
@@ -242,7 +264,7 @@ class _Cell extends State<Cell> {
             Offstage(
               child: Icon(
                 Icons.check,
-                color: Color(0xFF1AAD19),
+                color: widget.checked == true ? Color(0xFF1AAD19) : Color(0xFFFFFFFF),
                 size: 20,
               ),
               offstage: widget.radio != true,
