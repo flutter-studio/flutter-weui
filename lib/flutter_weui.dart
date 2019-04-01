@@ -15,3 +15,4 @@ export 'media_box.dart';
 export 'panel.dart';
 export 'footer.dart';
 export 'article.dart';
+export 'preview.dart';
