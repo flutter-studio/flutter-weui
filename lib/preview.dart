@@ -2,20 +2,6 @@ import 'package:flutter/material.dart';
 import 'constants.dart';
 import 'util.dart';
 import 'touchable.dart';
-
-/*
-class PreView extends StatefulWidget {
-  PreView({this.header, this.body, this.footer,Key key}):super(key: key);
-
-  final PreViewHeader header;
-  final PreViewBody body;
-  final PreViewFooter footer;
-
-  @override
-  _PreViewState createState() => _PreViewState();
-}
-*/
-
 class PreView extends StatelessWidget {
   PreView({this.header, this.body, this.footer,Key key}):super(key: key);
 
