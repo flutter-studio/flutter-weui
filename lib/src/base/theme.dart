@@ -1,5 +1,7 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:smart_color/smart_color.dart';
+
 // 黑暗主题对应颜色
 class Dark {
   Dark._();
@@ -43,6 +45,7 @@ class Dark {
   static Color WEUI_TAG_BACKGROUND_BLACK =
       SmartColor.parse("rgba(255, 255, 255, 0.05)");
 }
+
 // 明亮主题对应颜色
 class Light {
   Light._();
@@ -83,4 +86,65 @@ class Light {
   static Color WEUI_TAG_TEXT_BLACK = SmartColor.parse("rgba(0, 0, 0, 0.5)");
   static Color WEUI_TAG_BACKGROUND_BLACK =
       SmartColor.parse("rgba(0, 0, 0, 0.05)");
+}
+
+class WeuiApp extends StatelessWidget {
+  WeuiApp({
+    @required this.child,
+    this.theme,
+  }) : assert(child != null);
+  final Widget child;
+  final WeuiThemeData theme;
+  @override
+  Widget build(BuildContext context) {
+    return WeuiTheme(
+      child: child,
+      data: theme ?? WeuiThemeData.light(),
+    );
+  }
+}
+
+class WeuiTheme extends StatelessWidget {
+  WeuiTheme({
+    Key key,
+    @required this.data,
+    @required this.child,
+  })  : assert(data != null),
+        assert(child != null),
+        super(key: key);
+  final WeuiThemeData data;
+  final Widget child;
+
+  static WeuiThemeData of(BuildContext context) {
+    final _InheritedTheme inheritedTheme =
+        context.inheritFromWidgetOfExactType(_InheritedTheme);
+    return inheritedTheme?.theme?.data ?? WeuiThemeData.light();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return _InheritedTheme(
+      theme: this,
+      child: child,
+    );
+  }
+}
+
+@immutable
+class WeuiThemeData extends Diagnosticable {
+  factory WeuiThemeData.light() => null;
+}
+
+class _InheritedTheme extends InheritedWidget {
+  const _InheritedTheme({
+    Key key,
+    @required this.theme,
+    @required Widget child,
+  })  : assert(theme != null),
+        super(key: key, child: child);
+
+  final WeuiTheme theme;
+
+  @override
+  bool updateShouldNotify(_InheritedTheme old) => theme.data != old.theme.data;
 }
