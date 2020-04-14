@@ -17,3 +17,4 @@ ios/Runner/GeneratedPluginRegistrant.*
 node_modules/
 
 package-lock.json
+*.lock
