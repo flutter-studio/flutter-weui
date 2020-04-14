@@ -5,6 +5,10 @@ import 'package:smart_color/smart_color.dart';
 Color _themeColor(Brightness brightness, Color light, Color dark) =>
     brightness == Brightness.dark ? dark : light;
 
+typedef ThemeColorFunction =  Color Function(Brightness,Color,Color);
+
+ThemeColorFunction themeColor = _themeColor;
+
 Color weuiBgColorActive(Brightness brightness) => _themeColor(
     brightness,
     SmartColor.parse("#ececec"),

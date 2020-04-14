@@ -104,3 +104,7 @@ ColorFunction weuiBtnWarnDisabledFontColor = weuiBtnDisabledFontColor;
 ColorFunction weuiBtnWarnBg = weuiBtnDefaultBg;
 ColorFunction weuiBtnWarnActiveBg = weuiBtnDefaultActiveBg;
 ColorFunction weuiBtnwarnDisabledBg = weuiBtnDefaultDisabledBg;
+
+double pxToEm(value)=>value/16;
+
+double emToPx(value)=>value*16;
