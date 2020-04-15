@@ -88,37 +88,37 @@ class Light {
       SmartColor.parse("rgba(0, 0, 0, 0.05)");
 }
 
-class WeuiApp extends StatelessWidget {
-  WeuiApp({
+class WeUIApp extends StatelessWidget {
+  WeUIApp({
     @required this.child,
     this.theme,
   }) : assert(child != null);
   final Widget child;
-  final WeuiThemeData theme;
+  final WeUIThemeData theme;
   @override
   Widget build(BuildContext context) {
-    return WeuiTheme(
+    return WeUITheme(
       child: child,
-      data: theme ?? WeuiThemeData.light(),
+      data: theme ?? WeUIThemeData.light(),
     );
   }
 }
 
-class WeuiTheme extends StatelessWidget {
-  WeuiTheme({
+class WeUITheme extends StatelessWidget {
+  WeUITheme({
     Key key,
     @required this.data,
     @required this.child,
   })  : assert(data != null),
         assert(child != null),
         super(key: key);
-  final WeuiThemeData data;
+  final WeUIThemeData data;
   final Widget child;
 
-  static WeuiThemeData of(BuildContext context) {
+  static WeUIThemeData of(BuildContext context) {
     final _InheritedTheme inheritedTheme =
         context.inheritFromWidgetOfExactType(_InheritedTheme);
-    return inheritedTheme?.theme?.data ?? WeuiThemeData.light();
+    return inheritedTheme?.theme?.data ?? WeUIThemeData.light();
   }
 
   @override
@@ -131,8 +131,8 @@ class WeuiTheme extends StatelessWidget {
 }
 
 @immutable
-class WeuiThemeData extends Diagnosticable {
-  factory WeuiThemeData.light() => null;
+class WeUIThemeData extends Diagnosticable {
+  factory WeUIThemeData.light() => null;
 }
 
 class _InheritedTheme extends InheritedWidget {
@@ -143,7 +143,7 @@ class _InheritedTheme extends InheritedWidget {
   })  : assert(theme != null),
         super(key: key, child: child);
 
-  final WeuiTheme theme;
+  final WeUITheme theme;
 
   @override
   bool updateShouldNotify(_InheritedTheme old) => theme.data != old.theme.data;
