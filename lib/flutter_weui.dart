@@ -17,3 +17,4 @@ export './src/footer.dart';
 export './src/article.dart';
 export './src/preview.dart';
 export './src/base/theme.dart' hide Dark, Light;
+export './src/scaffold.dart';
