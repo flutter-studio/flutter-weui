@@ -134,6 +134,17 @@ class WeUITheme extends StatelessWidget {
 @immutable
 class WeUIThemeData extends Diagnosticable {
   factory WeUIThemeData({
+    Color primaryColor,
+    Color warnColor,
+    Color activeMaskBlack,
+    Color bgDefaultColor,
+    Color bgPrimaryColor,
+    Color bgActiveColor,
+    Color lineLightColor,
+    Color lineDarkColor,
+    Color textTitleColor,
+    Color textDescColor,
+    Color textWarnColor,   
     Brightness brightness,
     Color textTipsColor,
     Color linkDefaultColor,
@@ -141,20 +152,64 @@ class WeUIThemeData extends Diagnosticable {
     brightness ??= Brightness.light;
     textTipsColor ??= weuiTextColorTips(brightness);
     linkDefaultColor ??= weuiLinkColorDefault(brightness);
+    primaryColor ??= weuiColorPrimary(brightness);
+    warnColor ??= weuiColorWarn(brightness);
+    activeMaskBlack ??= weuiActiveMaskBlack(brightness);
+    bgDefaultColor ??= weuiBgColorDefault(brightness);
+    bgPrimaryColor ??= weuiBgColorPrimary(brightness);
+    bgActiveColor ??= weuiBgColorActive(brightness);
+    lineDarkColor ??= weuiLineColorDark(brightness);
+    lineLightColor ??= weuiLineColorLight(brightness);
+    textTitleColor ??= weuiTextColorTitle(brightness);
+    textDescColor ??= weuiTextColorDesc(brightness);
+    textWarnColor ??= weuiTextColorWarn(brightness);
     return WeUIThemeData.raw(
       brightness: brightness,
       textTipsColor: textTipsColor,
       linkDefaultColor: linkDefaultColor,
+      primaryColor: primaryColor,
+      warnColor: warnColor,
+      activeMaskBlack: activeMaskBlack,
+      bgDefaultColor: bgDefaultColor,
+      bgPrimaryColor: bgPrimaryColor,
+      bgActiveColor: bgActiveColor,
+      lineDarkColor: lineDarkColor,
+      lineLightColor: lineLightColor,
+      textDescColor: textDescColor,
+      textTitleColor: textTitleColor,
+      textWarnColor: textWarnColor,
     );
   }
   const WeUIThemeData.raw({
+    @required this.primaryColor,
+    @required this.warnColor,
+    @required this.activeMaskBlack,
+    @required this.bgDefaultColor,
+    @required this.bgPrimaryColor,
+    @required this.bgActiveColor,
+    @required this.lineLightColor,
+    @required this.lineDarkColor,
+    @required this.textTitleColor,
+    @required this.textDescColor,
+    @required this.textWarnColor,
     @required this.brightness,
     @required this.textTipsColor,
     @required this.linkDefaultColor,
   });
+  final Color primaryColor;
+  final Color warnColor;
   final Brightness brightness;
   final Color textTipsColor;
   final Color linkDefaultColor;
+  final Color activeMaskBlack;
+  final Color bgDefaultColor;
+  final Color bgPrimaryColor;
+  final Color bgActiveColor;
+  final Color lineLightColor;
+  final Color lineDarkColor;
+  final Color textTitleColor;
+  final Color textDescColor;
+  final Color textWarnColor;
 
   factory WeUIThemeData.light() => null;
 }
