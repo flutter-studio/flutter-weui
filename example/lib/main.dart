@@ -57,15 +57,18 @@ class _MyHomePageState extends State<MyHomePage> {
     // The Flutter framework has been optimized to make rerunning build methods
     // fast, so that you can just rebuild anything that needs updating rather
     // than having to individually change instances of widgets.
-    return Scaffold(
+    return WeUIApp(child: Scaffold(
       appBar: null,
       body: NotificationListener(
         onNotification: (e){
-          print(e.toString());
+          // print(e.toString());
         },
         child: ListView(
           //physics: BouncingScrollPhysics(),
           children: <Widget>[
+            // Button(),
+            // Button(type: ButtonType.primay,),
+            // Button(type: ButtonType.warn,),
             SizedBox(
               height: 200,
               child: PageView(
@@ -92,6 +95,15 @@ class _MyHomePageState extends State<MyHomePage> {
                 // horizontal).
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
+                  Button(),
+                   Button(type: ButtonType.primay,),
+                   Button(type: ButtonType.warn,),
+                     Button(loading: true,),
+                   Button(type: ButtonType.primay,loading: true,),
+                   Button(type: ButtonType.warn,loading: true,),
+                             Button(disabled: true,),
+                   Button(type: ButtonType.primay,disabled: true,),
+                   Button(type: ButtonType.warn,disabled: true,),
                   buildCells(context),
                   Ink(
                     decoration: BoxDecoration(color: Colors.red, borderRadius: BorderRadius.all(Radius.circular(50))),
@@ -124,10 +136,11 @@ class _MyHomePageState extends State<MyHomePage> {
                     ),
                     onPressed: () {},
                   ),
+                  WeUIApp(child:  
                   Footer(
-                    text: "sdfsfd",
+                    // text: "sdfsfd",
                     links: [Link(text: "sdfds"), Link(text: "sdfsf")],
-                  ),
+                  ),),
                   Article(
                     children: <Widget>[
                       H1(
@@ -179,7 +192,7 @@ class _MyHomePageState extends State<MyHomePage> {
         tooltip: 'Increment',
         child: Icon(Icons.add),
       ), // This trailing comma makes auto-formatting nicer for build methods.
-    );
+    ));
   }
 
   Cells buildCells(BuildContext context) {
@@ -211,7 +224,7 @@ class _MyHomePageState extends State<MyHomePage> {
           secondaryText: "说明文字",
           onPressed: () {
             ActionSheet.show(
-                context: context,
+                context,
                 data: ["1", "3", "sdfs"],
                 onPress: (details) {
                   print(details.toString());
