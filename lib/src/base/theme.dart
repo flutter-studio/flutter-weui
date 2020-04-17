@@ -1,5 +1,6 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_weui/src/base/color.dart';
 import 'package:smart_color/smart_color.dart';
 
 // 黑暗主题对应颜色
@@ -132,6 +133,29 @@ class WeUITheme extends StatelessWidget {
 
 @immutable
 class WeUIThemeData extends Diagnosticable {
+  factory WeUIThemeData({
+    Brightness brightness,
+    Color textTipsColor,
+    Color linkDefaultColor,
+  }){
+    brightness ??= Brightness.light;
+    textTipsColor ??= weuiTextColorTips(brightness);
+    linkDefaultColor ??= weuiLinkColorDefault(brightness);
+    return WeUIThemeData.raw(
+      brightness: brightness,
+      textTipsColor: textTipsColor,
+      linkDefaultColor: linkDefaultColor,
+    );
+  }
+  const WeUIThemeData.raw({
+    @required this.brightness,
+    @required this.textTipsColor,
+    @required this.linkDefaultColor,
+  });
+  final Brightness brightness;
+  final Color textTipsColor;
+  final Color linkDefaultColor;
+
   factory WeUIThemeData.light() => null;
 }
 
