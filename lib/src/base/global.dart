@@ -108,3 +108,6 @@ ColorFunction weuiBtnwarnDisabledBg = weuiBtnDefaultDisabledBg;
 double pxToEm(value)=>value/16;
 
 double emToPx(value)=>value*16;
+
+
+//html中em单位表示相对于当前元素fontSize的尺寸，rem表示相对于根元素(html标签)的fontSize的尺寸
