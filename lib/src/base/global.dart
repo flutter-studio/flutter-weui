@@ -77,9 +77,9 @@ Color weuiBtnDisabledFontColor(Brightness brightness) => themeColor(
 ColorFunction weuiBtnDisabledBg = weuiBtnDefaultBg;
 
 // // default
-Color weuiBtnDefaultColor(Brightness brightness) => themeColor(brightness,
+Color weuiBtnDefaultFontColor(Brightness brightness) => themeColor(brightness,
     SmartColor.parse("#06ae56"), SmartColor.parse("rgba(255, 255, 255, 0.8)"));
-// ColorFunction weuiBtnDefaultDisabledFontColor=weuiBtnDisabledFontColor;
+ColorFunction weuiBtnDefaultDisabledFontColor=weuiBtnDisabledFontColor;
 Color weuiBtnDefaultBg(Brightness brightness) => themeColor(brightness,
     SmartColor.parse("#f2f2f2"), SmartColor.parse("rgba(255, 255, 255, 0.08)"));
 Color weuiBtnDefaultActiveBg(Brightness brightness) => themeColor(

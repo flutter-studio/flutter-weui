@@ -1,5 +1,6 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_weui/src/base/button_theme.dart';
 import 'package:flutter_weui/src/base/color.dart';
 import 'package:smart_color/smart_color.dart';
 
@@ -148,6 +149,7 @@ class WeUIThemeData extends Diagnosticable {
     Brightness brightness,
     Color textTipsColor,
     Color linkDefaultColor,
+    WeUIButtonThemeData buttonTheme,
   }){
     brightness ??= Brightness.light;
     textTipsColor ??= weuiTextColorTips(brightness);
@@ -163,6 +165,7 @@ class WeUIThemeData extends Diagnosticable {
     textTitleColor ??= weuiTextColorTitle(brightness);
     textDescColor ??= weuiTextColorDesc(brightness);
     textWarnColor ??= weuiTextColorWarn(brightness);
+    buttonTheme ??= WeUIButtonThemeData(brightness: brightness);
     return WeUIThemeData.raw(
       brightness: brightness,
       textTipsColor: textTipsColor,
@@ -178,6 +181,7 @@ class WeUIThemeData extends Diagnosticable {
       textDescColor: textDescColor,
       textTitleColor: textTitleColor,
       textWarnColor: textWarnColor,
+      buttonTheme: buttonTheme,
     );
   }
   const WeUIThemeData.raw({
@@ -195,6 +199,7 @@ class WeUIThemeData extends Diagnosticable {
     @required this.brightness,
     @required this.textTipsColor,
     @required this.linkDefaultColor,
+    @required this.buttonTheme,
   });
   final Color primaryColor;
   final Color warnColor;
@@ -210,8 +215,11 @@ class WeUIThemeData extends Diagnosticable {
   final Color textTitleColor;
   final Color textDescColor;
   final Color textWarnColor;
+  final WeUIButtonThemeData buttonTheme;
 
-  factory WeUIThemeData.light() => null;
+  factory WeUIThemeData.light() => WeUIThemeData(brightness: Brightness.light);
+
+  factory WeUIThemeData.dark() => WeUIThemeData(brightness: Brightness.dark);
 }
 
 class _InheritedTheme extends InheritedWidget {
