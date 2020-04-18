@@ -160,6 +160,7 @@ class _ButtonState extends State<Button> {
                 style: TextStyle(
                   fontSize: fontSize,
                   color: fontColor,
+                  fontWeight: buttonTheme.btnFontWeight
                 ),
               ),
             ),

@@ -53,7 +53,7 @@ class WeUIButtonTheme extends InheritedWidget {
   @override
   bool updateShouldNotify(WeUIButtonTheme oldWidget) => this.data != oldWidget.data;
 }
-
+const FontWeight dBtnFontWeight = FontWeight.w700;
 class WeUIButtonThemeData {
   factory WeUIButtonThemeData({
     Brightness brightness,
@@ -84,6 +84,7 @@ class WeUIButtonThemeData {
     Color btnWarnBg,
     Color btnWarnActiveBg,
     Color btnwarnDisabledBg,
+    FontWeight btnFontWeight,
   }) {
     brightness ??= Brightness.light;
     btnFontColor ??= weuiBtnFontColor(brightness);
@@ -104,6 +105,7 @@ class WeUIButtonThemeData {
     btnWarnBg ??= weuiBtnWarnBg(brightness);
     btnWarnActiveBg ??= weuiBtnWarnActiveBg(brightness);
     btnwarnDisabledBg ??= weuiBtnwarnDisabledBg(brightness);
+    btnFontWeight ??= dBtnFontWeight;
     return WeUIButtonThemeData.raw(
       btnWidth: btnWidth,
       btnHeight: btnHeight,
@@ -132,6 +134,7 @@ class WeUIButtonThemeData {
       btnWarnBg: btnWarnBg,
       btnWarnActiveBg: btnWarnActiveBg,
       btnwarnDisabledBg: btnwarnDisabledBg,
+      btnFontWeight: btnFontWeight,
     );
   }
 
@@ -167,6 +170,7 @@ class WeUIButtonThemeData {
     @required this.btnWarnBg,
     @required this.btnWarnActiveBg,
     @required this.btnwarnDisabledBg,
+    @required this.btnFontWeight,
   }) : btnCellLineHeight = (btnCellHeight - 2 * btnCellGap) / btnFontSize;
   final double btnWidth;
   final double btnHeight;
@@ -196,4 +200,5 @@ class WeUIButtonThemeData {
   final Color btnWarnBg;
   final Color btnWarnActiveBg;
   final Color btnwarnDisabledBg;
+  final FontWeight btnFontWeight;
 }
