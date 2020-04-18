@@ -19,12 +19,14 @@ class Button extends StatefulWidget {
     this.text,
     this.type = ButtonType.default_,
     this.onPress,
+    this.mini = false,
   }) : super(key: key);
   final bool disabled;
   final String text;
   final ButtonType type;
   final bool loading;
   final VoidCallback onPress;
+  final bool mini;
   @override
   _ButtonState createState() => _ButtonState();
 }
@@ -42,7 +44,8 @@ class _ButtonState extends State<Button> {
 
   WeUIThemeData get theme => WeUITheme.of(context);
 
-  WeUIButtonThemeData get buttonTheme => WeUIButtonTheme.of(context) ?? theme.buttonTheme;
+  WeUIButtonThemeData get buttonTheme =>
+      WeUIButtonTheme.of(context) ?? theme.buttonTheme;
 
   @override
   void initState() {
@@ -113,11 +116,18 @@ class _ButtonState extends State<Button> {
 
   @override
   Widget build(BuildContext context) {
-    final double btnWidth = buttonTheme.btnWidth;
-    final double fontSize = buttonTheme.btnFontSize;
+    final double btnWidth = widget.mini ? null : buttonTheme.btnWidth;
+    final double fontSize =
+        widget.mini ? buttonTheme.btnMiniFontSize : buttonTheme.btnFontSize;
     final double radius = buttonTheme.btnBorderRadius;
     final double btnHeight = buttonTheme.btnHeight;
-    final double lineHeight = (btnHeight - 16) / fontSize;
+    final double lineHeight = widget.mini
+        ? buttonTheme.btnMiniHeight / fontSize
+        : (btnHeight - 16) / fontSize;
+    final EdgeInsetsGeometry padding = widget.mini
+        ? const EdgeInsets.symmetric(horizontal: 12)
+        : const EdgeInsets.symmetric(vertical: 8, horizontal: 24);
+
     return GestureDetector(
       onTapDown: onTapDown,
       onTapUp: onTapUp,
@@ -125,9 +135,11 @@ class _ButtonState extends State<Button> {
       behavior: HitTestBehavior.opaque,
       child: Container(
         width: btnWidth,
-        decoration: BoxDecoration(borderRadius: BorderRadius.circular(radius), color: bgColor),
+        decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(radius), color: bgColor),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
+          mainAxisSize: MainAxisSize.min,
           children: <Widget>[
             widget.loading == true && !widget.disabled
                 ? Padding(
@@ -147,7 +159,7 @@ class _ButtonState extends State<Button> {
             ),
           ],
         ),
-        padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 24),
+        padding: padding,
       ),
     );
   }
@@ -155,7 +167,9 @@ class _ButtonState extends State<Button> {
   @override
   void didUpdateWidget(Button oldWidget) {
     super.didUpdateWidget(oldWidget);
-    if (widget.loading != oldWidget.loading || widget.disabled != oldWidget.disabled || widget.type != oldWidget.type) {
+    if (widget.loading != oldWidget.loading ||
+        widget.disabled != oldWidget.disabled ||
+        widget.type != oldWidget.type) {
       initColor();
     }
   }
