@@ -150,6 +150,7 @@ class WeUIThemeData extends Diagnosticable {
     Color textTipsColor,
     Color linkDefaultColor,
     WeUIButtonThemeData buttonTheme,
+    Color loadingColor,
   }){
     brightness ??= Brightness.light;
     textTipsColor ??= weuiTextColorTips(brightness);
@@ -166,6 +167,7 @@ class WeUIThemeData extends Diagnosticable {
     textDescColor ??= weuiTextColorDesc(brightness);
     textWarnColor ??= weuiTextColorWarn(brightness);
     buttonTheme ??= WeUIButtonThemeData(brightness: brightness);
+    loadingColor ??= weuiLoadingColor(brightness);
     return WeUIThemeData.raw(
       brightness: brightness,
       textTipsColor: textTipsColor,
@@ -182,8 +184,48 @@ class WeUIThemeData extends Diagnosticable {
       textTitleColor: textTitleColor,
       textWarnColor: textWarnColor,
       buttonTheme: buttonTheme,
+      loadingColor: loadingColor,
     );
   }
+
+  WeUIThemeData copyWith({
+    Color primaryColor,
+    Color warnColor,
+    Color activeMaskBlack,
+    Color bgDefaultColor,
+    Color bgPrimaryColor,
+    Color bgActiveColor,
+    Color lineLightColor,
+    Color lineDarkColor,
+    Color textTitleColor,
+    Color textDescColor,
+    Color textWarnColor,
+    Brightness brightness,
+    Color textTipsColor,
+    Color linkDefaultColor,
+    WeUIButtonThemeData buttonTheme,
+    Color loadingColor,
+  }){
+    return WeUIThemeData.raw(
+      brightness: brightness ?? this.brightness,
+      textTipsColor: textTipsColor ?? this.textTipsColor,
+      linkDefaultColor: linkDefaultColor ?? this.linkDefaultColor,
+      primaryColor: primaryColor ?? primaryColor,
+      warnColor: warnColor ?? this.warnColor,
+      activeMaskBlack: activeMaskBlack ?? this.activeMaskBlack,
+      bgDefaultColor: bgDefaultColor ?? this.bgDefaultColor,
+      bgPrimaryColor: bgPrimaryColor ?? this.bgPrimaryColor,
+      bgActiveColor: bgActiveColor ?? this.bgActiveColor,
+      lineDarkColor: lineDarkColor ?? this.lineDarkColor,
+      lineLightColor: lineLightColor ?? this.lineLightColor,
+      textDescColor: textDescColor ?? this.textDescColor,
+      textTitleColor: textTitleColor ?? this.textTitleColor,
+      textWarnColor: textWarnColor ?? this.textWarnColor,
+      buttonTheme: buttonTheme ?? this.buttonTheme,
+      loadingColor: loadingColor ?? this.loadingColor,
+    );
+  }
+
   const WeUIThemeData.raw({
     @required this.primaryColor,
     @required this.warnColor,
@@ -200,6 +242,7 @@ class WeUIThemeData extends Diagnosticable {
     @required this.textTipsColor,
     @required this.linkDefaultColor,
     @required this.buttonTheme,
+    @required this.loadingColor,
   });
   final Color primaryColor;
   final Color warnColor;
@@ -216,6 +259,7 @@ class WeUIThemeData extends Diagnosticable {
   final Color textDescColor;
   final Color textWarnColor;
   final WeUIButtonThemeData buttonTheme;
+  final Color loadingColor;
 
   factory WeUIThemeData.light() => WeUIThemeData(brightness: Brightness.light);
 
