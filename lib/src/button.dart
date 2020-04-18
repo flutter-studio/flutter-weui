@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_weui/flutter_weui.dart';
 import 'package:flutter_weui/src/base/button_theme.dart';
-import 'package:flutter/cupertino.dart';
+import 'loading.dart';
+import 'base/theme.dart';
 
 ///按钮的三种类型
 
@@ -127,7 +128,6 @@ class _ButtonState extends State<Button> {
     final EdgeInsetsGeometry padding = widget.mini
         ? const EdgeInsets.symmetric(horizontal: 12)
         : const EdgeInsets.symmetric(vertical: 8, horizontal: 24);
-
     return GestureDetector(
       onTapDown: onTapDown,
       onTapUp: onTapUp,
@@ -144,7 +144,13 @@ class _ButtonState extends State<Button> {
             widget.loading == true && !widget.disabled
                 ? Padding(
                     padding: EdgeInsets.only(right: 0.34 * fontSize),
-                    child: CupertinoActivityIndicator(radius: 9),
+                    child: WeUITheme(
+                      data: WeUITheme.of(context).copyWith(
+                          loadingColor: widget.type == ButtonType.primay
+                              ? WeUIThemeData.dark().loadingColor
+                              : null),
+                      child: Loading(radius: 9),
+                    ),
                   )
                 : SizedBox(),
             Padding(

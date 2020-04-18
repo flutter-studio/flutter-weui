@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/cupertino.dart';
+import 'loading.dart';
 import 'package:flutter_weui/flutter_weui.dart';
 
 enum LoadType {
@@ -38,7 +38,7 @@ class LoadMore extends StatelessWidget {
           children: <Widget>[
             Padding(
               padding: const EdgeInsets.only(right: 5),
-              child: CupertinoActivityIndicator(
+              child: Loading(
                 radius: 9,
               ),
             ),
