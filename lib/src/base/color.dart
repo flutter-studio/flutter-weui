@@ -46,3 +46,5 @@ Color weuiLoadingColor(Brightness brightness) => _themeColor(brightness, Color(0
 
 Color weuiFgHalf(Brightness brightness) =>
     themeColor(brightness, Light.WEUI_FG_HALF, Dark.WEUI_FG_HALF);
+
+Color weuiToastBgColor(Brightness brightness)=> _themeColor(brightness, Color(0xff4c4c4c), Color(0xff606060));
