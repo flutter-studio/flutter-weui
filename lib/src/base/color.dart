@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_weui/src/base/theme.dart';
+import 'theme.dart';
 import 'package:smart_color/smart_color.dart';
 
 Color _themeColor(Brightness brightness, Color light, Color dark) =>
@@ -38,7 +38,7 @@ Color weuiLineColorDark(Brightness brightness) => _themeColor(brightness,Light.W
 
 // text
 Color weuiTextColorTitle(Brightness brightness) => _themeColor(brightness,Light.WEUI_FG_0,Dark.WEUI_FG_0);
-Color weuiTextColorDesc(Brightness brightness) => _themeColor(brightness,Light.WEUI_FG_0,Dark.WEUI_FG_0);
+Color weuiTextColorDesc(Brightness brightness) => _themeColor(brightness,Light.WEUI_FG_1,Dark.WEUI_FG_1);
 Color weuiTextColorTips(Brightness brightness) => _themeColor(brightness,Light.WEUI_FG_2,Dark.WEUI_FG_2);
 Color weuiTextColorWarn(Brightness brightness) => weuiColorWarn(brightness);
 

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_weui/src/base/global.dart';
+import 'global.dart';
 
 class WeUIButtonTheme extends InheritedWidget {
   static WeUIButtonThemeData of(BuildContext context) {

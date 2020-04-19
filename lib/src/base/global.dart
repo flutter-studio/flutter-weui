@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_weui/src/base/theme.dart';
+import 'theme.dart';
 import 'package:smart_color/smart_color.dart';
 import 'color.dart';
 
