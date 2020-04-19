@@ -2,42 +2,62 @@ import 'package:flutter/material.dart';
 
 /// 按下时高亮
 class TouchableHighlight extends StatefulWidget {
-  TouchableHighlight({Key key, @required this.child, this.onPressed}) : super(key: key);
+  TouchableHighlight({
+    Key key,
+    @required this.child,
+    this.onPressed,
+    this.color = const Color(0xFFFFFFFF),
+    this.activeColor = const Color(0xFFDEDEDE),
+    this.disabled = false,
+  }) : super(key: key);
 
   final Widget child;
   final VoidCallback onPressed;
+  final Color color;
+  final Color activeColor;
+  final bool disabled;
   @override
   _TouchableHighlightState createState() => _TouchableHighlightState();
 }
 
 class _TouchableHighlightState extends State<TouchableHighlight> {
-  Color bg = Color(0xFFFFFFFF);
+  @override
+  initState() {
+    super.initState();
+    bg = widget.color;
+  }
+
+  Color bg;
 
   _onTapDown(e) {
+    if (widget.disabled) return;
     setState(() {
-      bg = Color(0xFFDEDEDE);
+      bg = widget.activeColor;
     });
   }
 
   _onTapUp(e) {
+    if (widget.disabled) return;
     setState(() {
-      bg = Color(0xFFFFFFFF);
+      bg = widget.color;
     });
     if (widget.onPressed != null) widget.onPressed();
   }
 
   _onTapCancel() {
+    if (widget.disabled) return;
     setState(() {
-      bg = Color(0xFFFFFFFF);
+      bg = widget.color;
     });
   }
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTapDown: this._onTapDown,
-      onTapUp: this._onTapUp,
-      onTapCancel: this._onTapCancel,
+      behavior: HitTestBehavior.opaque,
+      onTapDown: _onTapDown,
+      onTapUp: _onTapUp,
+      onTapCancel: _onTapCancel,
       child: Container(
         color: bg,
         child: widget.child,
@@ -48,7 +68,8 @@ class _TouchableHighlightState extends State<TouchableHighlight> {
 
 /// 按下时不透明度发生变化
 class TouchableOpacity extends StatefulWidget {
-  TouchableOpacity({Key key, @required this.child, this.onPressed}) : super(key: key);
+  TouchableOpacity({Key key, @required this.child, this.onPressed})
+      : super(key: key);
 
   final Widget child;
   final VoidCallback onPressed;

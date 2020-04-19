@@ -1,28 +1,33 @@
 import 'package:flutter/material.dart';
 import 'constants.dart';
-import 'util.dart';
 import 'touchable.dart';
+import 'base/theme.dart';
+
 class PreView extends StatelessWidget {
-  PreView({this.header, this.body, this.footer,Key key}):super(key: key);
+  PreView({this.header, this.body, this.footer, Key key}) : super(key: key);
 
   final PreViewHeader header;
   final PreViewBody body;
   final PreViewFooter footer;
-  getChildren() {
-    List<Widget> list = [];
-    if (header != null) list.add(header);
-    if (body != null) list.add(body);
-    if (footer != null) list.add(footer);
-    return list.toList();
-  }
-
   @override
   Widget build(BuildContext context) {
+    final WeUICellThemeData cellTheme =
+        WeUICellTheme.of(context) ?? WeUITheme.of(context).cellTheme;
+    final BorderSide borderSide = BorderSide(color: cellTheme.cellBorderColor);
+    List<Widget> children = [];
+    if (header != null) children.add(header);
+    if (body != null) children.add(body);
+    if (footer != null) children.add(footer);
     return Container(
-      decoration:
-          BoxDecoration(border: Border(bottom: BorderSide(color: Constants.borderColor), top: BorderSide(color: Constants.borderColor)), color: Colors.white),
+      decoration: BoxDecoration(
+        color: cellTheme.cellBg,
+        border: Border(
+          bottom: borderSide,
+          top: borderSide,
+        ),
+      ),
       child: Column(
-        children: getChildren(),
+        children: children,
       ),
     );
   }
@@ -30,46 +35,39 @@ class PreView extends StatelessWidget {
 
 /// PreViewItem组件
 class PreViewItem extends StatelessWidget {
-  PreViewItem({this.label, this.value,Key key}):super(key: key);
+  PreViewItem({this.label, this.value, Key key}) : super(key: key);
 
   final String label;
   final String value;
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 0, horizontal: 0),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: <Widget>[
-          Text(
-            label,
-            style: TextStyle(color: Color(0xFF999999), fontSize: emToPx(0.9)),
-          ),
-          Text(
-            value,
-            style: TextStyle(color: Color(0xFF999999), fontSize: emToPx(0.9)),
-          )
-        ],
-      ),
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: <Widget>[
+        _Label(data: label, fontSize: 0.9 * 14, lineHeight: 2),
+        Expanded(child: _Value(data: value, fontSize: 0.9 * 14, lineHeight: 2))
+      ],
     );
   }
 }
 
 /// PreViewBody组件
 class PreViewBody extends StatelessWidget {
-  PreViewBody({this.children = const [],Key key}):super(key: key);
+  PreViewBody({this.children = const [], Key key}) : super(key: key);
 
   final List<PreViewItem> children;
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 15),
-      decoration: BoxDecoration(border: Border(bottom: BorderSide(color: Constants.borderColor))),
+    final WeUIThemeData theme = WeUITheme.of(context);
+    final WeUICellThemeData cellTheme =
+        WeUICellTheme.of(context) ?? theme.cellTheme;
+    return Padding(
+      padding: EdgeInsets.all(cellTheme.cellGapV),
       child: Column(
-        children: children.toList(),
+        children: children,
       ),
     );
   }
@@ -77,41 +75,108 @@ class PreViewBody extends StatelessWidget {
 
 /// PreViewHeader组件
 class PreViewHeader extends StatelessWidget {
-  PreViewHeader({this.label, this.value,Key key}):super(key: key);
+  PreViewHeader({
+    this.label,
+    this.value,
+    Key key,
+  }) : super(key: key);
 
   final String label;
   final String value;
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.only(left: 15),
-      child: Container(
-        padding: const EdgeInsets.only(top: 10, bottom: 10, right: 15),
-        decoration: BoxDecoration(border: Border(bottom: BorderSide(color: Constants.borderColor,width: 1/MediaQuery.of(context).devicePixelRatio))),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: <Widget>[
-            Text(
-              label,
-              style: TextStyle(color: Color(0xFF999999), fontSize: emToPx(0.9)),
-            ),
-            Text(
-              value,
-              style: TextStyle(
-                fontSize: emToPx(1.2),
+    final WeUIThemeData theme = WeUITheme.of(context);
+    final WeUICellThemeData cellTheme =
+        WeUICellTheme.of(context) ?? theme.cellTheme;
+    return Column(
+      mainAxisSize: MainAxisSize.min,
+      children: <Widget>[
+        Padding(
+          padding: EdgeInsets.all(cellTheme.cellGapV),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: <Widget>[
+              Padding(
+                padding: const EdgeInsets.symmetric(vertical: 0.75 * 14),
+                child: _Label(data: label),
               ),
-            )
-          ],
+              Expanded(
+                child: _Value(
+                  data: value,
+                  fontSize: 14 * 1.6,
+                ),
+              )
+            ],
+          ),
         ),
+        Divider(
+          height: 1,
+          thickness: 1,
+          indent: cellTheme.cellGapH,
+          color: cellTheme.cellBorderColor,
+        )
+      ],
+    );
+  }
+}
+
+class _Label extends StatelessWidget {
+  _Label({
+    this.fontSize,
+    this.data,
+    this.lineHeight,
+  });
+  final String data;
+  final double fontSize;
+  final double lineHeight;
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: EdgeInsets.only(right: fontSize ?? 14),
+      constraints: BoxConstraints(minWidth: 4.0 * (fontSize ?? 14)),
+      child: Text(
+        data,
+        style: TextStyle(
+            fontSize: fontSize,
+            color: WeUITheme.of(context).textDescColor,
+            height: lineHeight),
+      ),
+    );
+  }
+}
+
+class _Value extends StatelessWidget {
+  _Value({
+    this.fontSize,
+    this.data,
+    this.lineHeight,
+  });
+  final String data;
+  final double fontSize;
+  final double lineHeight;
+  @override
+  Widget build(BuildContext context) {
+    return Text(
+      data,
+      textAlign: TextAlign.right,
+      style: TextStyle(
+        fontSize: fontSize,
+        color: WeUITheme.of(context).textTitleColor,
+        height: lineHeight,
       ),
     );
   }
 }
 
 class PreViewButton extends StatelessWidget {
-  PreViewButton({this.text = "", this.onPressed, this.primary = false,Key key}):super(key: key);
+  PreViewButton({
+    this.text = "",
+    this.onPressed,
+    this.primary = false,
+    Key key,
+  }) : super(key: key);
 
   final String text;
   final VoidCallback onPressed;
@@ -119,13 +184,22 @@ class PreViewButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return TouchableOpacity(
+    final WeUIThemeData theme = WeUITheme.of(context);
+    final WeUIDialogThemeData dialogTheme =
+        WeUIDialogTheme.of(context) ?? theme.dialogTheme;
+    return TouchableHighlight(
+      color: Colors.transparent,
+      activeColor: dialogTheme.dialogLinkActiveBgColor,
       child: Container(
-        height: Constants.btnHeight,
+        height: 50,
         child: Center(
           child: Text(
             text,
-            style: TextStyle(fontSize: Constants.btnFontSize, color: primary == true ? Constants.primaryColor : Color(0xFF999999)),
+            style: TextStyle(
+              color: primary == true
+                  ? theme.linkDefaultColor
+                  : theme.foregroundHalf,
+            ),
           ),
         ),
       ),
@@ -135,27 +209,32 @@ class PreViewButton extends StatelessWidget {
 }
 
 class PreViewFooter extends StatelessWidget {
-  PreViewFooter({this.children = const [],Key key}):super(key: key);
+  PreViewFooter({this.children = const [], Key key}) : super(key: key);
 
   final List<PreViewButton> children;
 
-  getChildren() {
-    List<Widget> list = [];
-    for (int i = 0; i < children.length; i++) {
-      list.add(Expanded(child: children.elementAt(i)));
-      list.add(Container(
-        width: 1,
-        height: Constants.btnHeight,
-        color: Constants.borderColor,
-      ));
-    }
-    return list.toList();
-  }
-
   @override
   Widget build(BuildContext context) {
-    return Row(
-      children: getChildren(),
+    final WeUIDialogThemeData dialogTheme =
+        WeUIDialogTheme.of(context) ?? WeUITheme.of(context).dialogTheme;
+    final List<Widget> buttons = children
+        .expand((btn) => [
+              Expanded(child: btn),
+              Container(
+                height: 50,
+                width: 1,
+                color: dialogTheme.dialogLineColor,
+              )
+            ])
+        .toList();
+//    buttons.removeLast();
+    return Column(
+      children: <Widget>[
+        Divider(height: 1, thickness: 1, color: dialogTheme.dialogLineColor),
+        Row(
+          children: buttons,
+        )
+      ],
     );
   }
 }
