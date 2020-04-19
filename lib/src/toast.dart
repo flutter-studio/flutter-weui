@@ -1,13 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:smart_color/smart_color.dart';
 import 'package:flutter/cupertino.dart';
+import 'loading.dart';
+import 'base/theme.dart';
 
 ///weui toast 组件
 class Toast {
   static bool _visible = false;
 
   /// 成功提示框弹出后三秒关闭
-  static success(BuildContext context, String text, {Duration duration = const Duration(seconds: 3)}) async {
+  static success(BuildContext context, String text,
+      {Duration duration = const Duration(seconds: 3)}) async {
     if (_visible == true) return;
     _visible = true;
     showDialog(
@@ -39,12 +41,17 @@ class Toast {
 }
 
 class _ToastDialog extends Dialog {
-  _ToastDialog({Key key, this.text, this.loading}) : super(key: key);
+  _ToastDialog({
+    Key key,
+    this.text,
+    this.loading,
+  }) : super(key: key);
   final String text;
   final bool loading;
 
   @override
   Widget build(BuildContext context) {
+    WeUIThemeData theme = WeUITheme.of(context);
     return Material(
       //创建透明层
       type: MaterialType.transparency, //透明类型
@@ -58,7 +65,7 @@ class _ToastDialog extends Dialog {
               child: new Container(
                 padding: const EdgeInsets.all(15),
                 decoration: ShapeDecoration(
-                  color: SmartColor.parse("rgba(40, 40, 40, 0.75)"),
+                  color: theme.toastBgColor,
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.all(
                       Radius.circular(5.0),
@@ -66,18 +73,23 @@ class _ToastDialog extends Dialog {
                   ),
                 ),
                 child: new Column(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: <Widget>[
-                    loading == true
-                        ? CupertinoActivityIndicator(
-                            radius: 15,
-                          )
-                        : Icon(
-                            Icons.check,
-                            size: 56,
-                            color: Colors.white,
-                          ),
+                    Container(
+                      height: 58,
+                      width: 58,
+                      child: loading == true
+                          ? WeUITheme(
+                              child: Loading(radius: 19),
+                              data: WeUIThemeData.dark(),
+                            )
+                          : Icon(
+                              Icons.check,
+                              size: 56,
+                              color: Colors.white,
+                            ),
+                    ),
                     new Padding(
                       padding: const EdgeInsets.only(top: 5),
                       child: new Text(
