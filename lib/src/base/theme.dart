@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_weui/src/base/button_theme.dart';
 import 'package:flutter_weui/src/base/color.dart';
 import 'package:smart_color/smart_color.dart';
+import 'cell_theme.dart';
 
 // 黑暗主题对应颜色
 class Dark {
@@ -145,13 +146,14 @@ class WeUIThemeData extends Diagnosticable {
     Color lineDarkColor,
     Color textTitleColor,
     Color textDescColor,
-    Color textWarnColor,   
+    Color textWarnColor,
     Brightness brightness,
     Color textTipsColor,
     Color linkDefaultColor,
     WeUIButtonThemeData buttonTheme,
     Color loadingColor,
-  }){
+    WeUICellThemeData cellTheme,
+  }) {
     brightness ??= Brightness.light;
     textTipsColor ??= weuiTextColorTips(brightness);
     linkDefaultColor ??= weuiLinkColorDefault(brightness);
@@ -168,6 +170,7 @@ class WeUIThemeData extends Diagnosticable {
     textWarnColor ??= weuiTextColorWarn(brightness);
     buttonTheme ??= WeUIButtonThemeData(brightness: brightness);
     loadingColor ??= weuiLoadingColor(brightness);
+    cellTheme ??= WeUICellThemeData(brightness: brightness);
     return WeUIThemeData.raw(
       brightness: brightness,
       textTipsColor: textTipsColor,
@@ -185,6 +188,7 @@ class WeUIThemeData extends Diagnosticable {
       textWarnColor: textWarnColor,
       buttonTheme: buttonTheme,
       loadingColor: loadingColor,
+      cellTheme: cellTheme,
     );
   }
 
@@ -205,7 +209,8 @@ class WeUIThemeData extends Diagnosticable {
     Color linkDefaultColor,
     WeUIButtonThemeData buttonTheme,
     Color loadingColor,
-  }){
+    WeUICellThemeData cellTheme,
+  }) {
     return WeUIThemeData.raw(
       brightness: brightness ?? this.brightness,
       textTipsColor: textTipsColor ?? this.textTipsColor,
@@ -223,6 +228,7 @@ class WeUIThemeData extends Diagnosticable {
       textWarnColor: textWarnColor ?? this.textWarnColor,
       buttonTheme: buttonTheme ?? this.buttonTheme,
       loadingColor: loadingColor ?? this.loadingColor,
+      cellTheme: cellTheme,
     );
   }
 
@@ -243,6 +249,7 @@ class WeUIThemeData extends Diagnosticable {
     @required this.linkDefaultColor,
     @required this.buttonTheme,
     @required this.loadingColor,
+    @required this.cellTheme,
   });
   final Color primaryColor;
   final Color warnColor;
@@ -260,6 +267,7 @@ class WeUIThemeData extends Diagnosticable {
   final Color textWarnColor;
   final WeUIButtonThemeData buttonTheme;
   final Color loadingColor;
+  final WeUICellThemeData cellTheme;
 
   factory WeUIThemeData.light() => WeUIThemeData(brightness: Brightness.light);
 

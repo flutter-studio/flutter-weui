@@ -3,7 +3,8 @@ import 'package:flutter_weui/src/base/global.dart';
 
 class WeUIButtonTheme extends InheritedWidget {
   static WeUIButtonThemeData of(BuildContext context) {
-    final WeUIButtonTheme buttonTheme = context.inheritFromWidgetOfExactType(WeUIButtonTheme);
+    final WeUIButtonTheme buttonTheme =
+        context.inheritFromWidgetOfExactType(WeUIButtonTheme);
     return buttonTheme?.data;
   }
 
@@ -51,9 +52,12 @@ class WeUIButtonTheme extends InheritedWidget {
   final WeUIButtonThemeData data;
 
   @override
-  bool updateShouldNotify(WeUIButtonTheme oldWidget) => this.data != oldWidget.data;
+  bool updateShouldNotify(WeUIButtonTheme oldWidget) =>
+      this.data != oldWidget.data;
 }
+
 const FontWeight dBtnFontWeight = FontWeight.w700;
+
 class WeUIButtonThemeData {
   factory WeUIButtonThemeData({
     Brightness brightness,
@@ -138,11 +142,13 @@ class WeUIButtonThemeData {
     );
   }
 
-  factory WeUIButtonThemeData.light() => WeUIButtonThemeData(brightness: Brightness.light);
+  factory WeUIButtonThemeData.light() =>
+      WeUIButtonThemeData(brightness: Brightness.light);
 
-  factory WeUIButtonThemeData.dark() => WeUIButtonThemeData(brightness: Brightness.dark);
+  factory WeUIButtonThemeData.dark() =>
+      WeUIButtonThemeData(brightness: Brightness.dark);
 
-  WeUIButtonThemeData.raw({
+  const WeUIButtonThemeData.raw({
     @required this.btnWidth,
     @required this.btnHeight,
     @required this.btnFontSize,
@@ -181,7 +187,7 @@ class WeUIButtonThemeData {
   final double btnMiniHeight;
   final double btnCellHeight;
   final double btnCellGap;
-  double btnCellLineHeight;
+  final double btnCellLineHeight;
   final Color btnFontColor;
   final Color btnDisabledFontColor;
   final Color btnDisabledBg;
