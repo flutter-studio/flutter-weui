@@ -79,7 +79,7 @@ ColorFunction weuiBtnDisabledBg = weuiBtnDefaultBg;
 // // default
 Color weuiBtnDefaultFontColor(Brightness brightness) => themeColor(brightness,
     SmartColor.parse("#06ae56"), SmartColor.parse("rgba(255, 255, 255, 0.8)"));
-ColorFunction weuiBtnDefaultDisabledFontColor=weuiBtnDisabledFontColor;
+ColorFunction weuiBtnDefaultDisabledFontColor = weuiBtnDisabledFontColor;
 Color weuiBtnDefaultBg(Brightness brightness) => themeColor(brightness,
     SmartColor.parse("#f2f2f2"), SmartColor.parse("rgba(255, 255, 255, 0.08)"));
 Color weuiBtnDefaultActiveBg(Brightness brightness) => themeColor(
@@ -105,9 +105,8 @@ ColorFunction weuiBtnWarnBg = weuiBtnDefaultBg;
 ColorFunction weuiBtnWarnActiveBg = weuiBtnDefaultActiveBg;
 ColorFunction weuiBtnwarnDisabledBg = weuiBtnDefaultDisabledBg;
 
-double pxToEm(value)=>value/16;
+double pxToEm(value) => value / 16;
 
-double emToPx(value)=>value*16;
-
+double emToPx(value) => value * 16;
 
 //html中em单位表示相对于当前元素fontSize的尺寸，rem表示相对于根元素(html标签)的fontSize的尺寸

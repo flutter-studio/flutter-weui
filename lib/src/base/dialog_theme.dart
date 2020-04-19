@@ -22,6 +22,12 @@ class WeUIDialogTheme extends InheritedWidget {
         super(child: child, key: key);
   final WeUIDialogThemeData data;
 
+  static WeUIDialogThemeData of(BuildContext context) {
+    final WeUIDialogTheme theme =
+        context.inheritFromWidgetOfExactType(WeUIDialogTheme);
+    return theme?.data;
+  }
+
   @override
   bool updateShouldNotify(WeUIDialogTheme oldWidget) => data != oldWidget.data;
 }

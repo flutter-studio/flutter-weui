@@ -43,3 +43,6 @@ Color weuiTextColorTips(Brightness brightness) => _themeColor(brightness,Light.W
 Color weuiTextColorWarn(Brightness brightness) => weuiColorWarn(brightness);
 
 Color weuiLoadingColor(Brightness brightness) => _themeColor(brightness, Color(0xFF3C3C44), Color(0xFFEBEBF5));
+
+Color weuiFgHalf(Brightness brightness) =>
+    themeColor(brightness, Light.WEUI_FG_HALF, Dark.WEUI_FG_HALF);

@@ -158,6 +158,7 @@ class WeUIThemeData extends Diagnosticable {
     Color loadingColor,
     WeUICellThemeData cellTheme,
     WeUIDialogThemeData dialogTheme,
+    Color foregroundHalf,
   }) {
     brightness ??= Brightness.light;
     textTipsColor ??= weuiTextColorTips(brightness);
@@ -177,6 +178,7 @@ class WeUIThemeData extends Diagnosticable {
     loadingColor ??= weuiLoadingColor(brightness);
     cellTheme ??= WeUICellThemeData(brightness: brightness);
     dialogTheme ??= WeUIDialogThemeData(brightness: brightness);
+    foregroundHalf ??= weuiFgHalf(brightness);
     return WeUIThemeData.raw(
       brightness: brightness,
       textTipsColor: textTipsColor,
@@ -196,6 +198,7 @@ class WeUIThemeData extends Diagnosticable {
       loadingColor: loadingColor,
       cellTheme: cellTheme,
       dialogTheme: dialogTheme,
+      foregroundHalf: foregroundHalf,
     );
   }
 
@@ -218,6 +221,7 @@ class WeUIThemeData extends Diagnosticable {
     Color loadingColor,
     WeUICellThemeData cellTheme,
     WeUIDialogThemeData dialogTheme,
+    Color foregroundHalf,
   }) {
     return WeUIThemeData.raw(
       brightness: brightness ?? this.brightness,
@@ -238,6 +242,7 @@ class WeUIThemeData extends Diagnosticable {
       loadingColor: loadingColor ?? this.loadingColor,
       cellTheme: cellTheme,
       dialogTheme: dialogTheme,
+      foregroundHalf: foregroundHalf,
     );
   }
 
@@ -260,6 +265,7 @@ class WeUIThemeData extends Diagnosticable {
     @required this.loadingColor,
     @required this.cellTheme,
     @required this.dialogTheme,
+    @required this.foregroundHalf,
   });
   final Color primaryColor;
   final Color warnColor;
@@ -279,6 +285,7 @@ class WeUIThemeData extends Diagnosticable {
   final Color loadingColor;
   final WeUICellThemeData cellTheme;
   final WeUIDialogThemeData dialogTheme;
+  final Color foregroundHalf;
 
   factory WeUIThemeData.light() => WeUIThemeData(brightness: Brightness.light);
 
