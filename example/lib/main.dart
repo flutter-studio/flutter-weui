@@ -9,10 +9,14 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData.light(),
-      home: MyHomePage(title: 'Flutter Demo Home Page'),
+    return WeUIApp(
+      theme: WeUIThemeData.dark(),
+      child: MaterialApp(
+        title: 'Flutter Demo',
+        color: Colors.red,
+        theme: ThemeData.light(),
+        home: MyHomePage(title: 'Flutter Demo Home Page'),
+      ),
     );
   }
 }
@@ -36,16 +40,18 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
+  WeUIThemeData theme = WeUIThemeData.light();
 
-  void _incrementCounter() {
+
+  void dark() {
     setState(() {
-      // This call to setState tells the Flutter framework that something has
-      // changed in this State, which causes it to rerun the build method below
-      // so that the display can reflect the updated values. If we changed
-      // _counter without calling setState(), then the build method would not be
-      // called again, and so nothing would appear to happen.
-      _counter++;
+      theme = WeUIThemeData.dark();
+    });
+  }
+
+  void light(){
+    setState(() {
+      theme = WeUIThemeData.light();
     });
   }
 
@@ -57,142 +63,124 @@ class _MyHomePageState extends State<MyHomePage> {
     // The Flutter framework has been optimized to make rerunning build methods
     // fast, so that you can just rebuild anything that needs updating rather
     // than having to individually change instances of widgets.
-    return WeUIApp(child: Scaffold(
+    return WeUIScaffold(
       appBar: null,
-      body: NotificationListener(
-        onNotification: (e){
-          // print(e.toString());
-        },
-        child: ListView(
-          //physics: BouncingScrollPhysics(),
+      body: ListView(
+    //physics: BouncingScrollPhysics(),
+    children: <Widget>[
+      Center(
+        // Center is a layout widget. It takes a single child and positions it
+        // in the middle of the parent.
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            // Button(),
-            // Button(type: ButtonType.primay,),
-            // Button(type: ButtonType.warn,),
-            SizedBox(
-              height: 200,
-              child: PageView(
-                children: <Widget>[Text("SDFSDFS"), Text("werfwr")],
+             Button(text: 'dark',onPress: dark),
+             Button(type: ButtonType.primay,text: 'light',onPress: light,),
+             Button(type: ButtonType.warn,onPress: (){
+               Toast.success(context, "dfsdf");
+             },),
+               Button(loading: true,),
+             Button(type: ButtonType.primay,loading: true,),
+             Button(type: ButtonType.warn,loading: true,),
+                       Button(disabled: true,),
+             Button(type: ButtonType.primay,disabled: true,),
+             Button(type: ButtonType.warn,onPress: (){
+               Toast.close(context);
+             },),
+             Button(mini:true,onPress: ()async{
+               Toast.loading(context, "dsfsfd");
+               await Future.delayed(Duration(seconds: 2));
+               Toast.close(context);
+             }),
+            PreView(
+              header: PreViewHeader(
+                label: "Header",
+                value: "sdfs",
               ),
-            ),
-            Center(
-              // Center is a layout widget. It takes a single child and positions it
-              // in the middle of the parent.
-              child: Column(
-                // Column is also layout widget. It takes a list of children and
-                // arranges them vertically. By default, it sizes itself to fit its
-                // children horizontally, and tries to be as tall as its parent.
-                //
-                // Invoke "debug painting" (press "p" in the console, choose the
-                // "Toggle Debug Paint" action from the Flutter Inspector in Android
-                // Studio, or the "Toggle Debug Paint" command in Visual Studio Code)
-                // to see the wireframe for each widget.
-                //
-                // Column has various properties to control how it sizes itself and
-                // how it positions its children. Here we use mainAxisAlignment to
-                // center the children vertically; the main axis here is the vertical
-                // axis because Columns are vertical (the cross axis would be
-                // horizontal).
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: <Widget>[
-                  Button(),
-                   Button(type: ButtonType.primay,),
-                   Button(type: ButtonType.warn,),
-                     Button(loading: true,),
-                   Button(type: ButtonType.primay,loading: true,),
-                   Button(type: ButtonType.warn,loading: true,),
-                             Button(disabled: true,),
-                   Button(type: ButtonType.primay,disabled: true,),
-                   Button(type: ButtonType.warn,disabled: true,),
-                  buildCells(context),
-                  Ink(
-                    decoration: BoxDecoration(color: Colors.red, borderRadius: BorderRadius.all(Radius.circular(50))),
-                    child: InkWell(
-                      splashColor: Colors.grey,
-                      borderRadius: BorderRadius.all(Radius.circular(50)),
-                      onTap: () {},
-                      child: Container(
-                        child: Center(child: Text("hhhh")),
-                        height: 100,
-                        width: 100,
-                      ),
-                    ),
+              body: PreViewBody(
+                children: [
+                  PreViewItem(
+                    label: 'Item',
+                    value:'123'
                   ),
-                  Text(
-                    'You have pushed the button this many times:',
+                  PreViewItem(
+                      label: 'Item',
+                      value:'123'
                   ),
-                  /*,
-              Button(type: ButtonType.btnPrimary,onPressed: (){
-                print("------------");
-              },text: "按钮",loading: false,),*/
-                  Text(
-                    '$_counter',
-                    style: Theme.of(context).textTheme.display1,
+                  PreViewItem(
+                      label: 'Item',
+                      value:'123'
                   ),
-                  TouchableHighlight(
-                    child: SizedBox(
-                      child: Text("sfsf"),
-                      height: 200,
-                    ),
-                    onPressed: () {},
-                  ),
-                  WeUIApp(child:  
-                  Footer(
-                    // text: "sdfsfd",
-                    links: [Link(text: "sdfds"), Link(text: "sdfsf")],
-                  ),),
-                  Article(
-                    children: <Widget>[
-                      H1(
-                        text: "大标题",
-                      ),
-                      Section(
-                        children: <Widget>[
-                          H2(text: "章标题"),
-                          Section(
-                            children: <Widget>[
-                              H3(
-                                text: "节标题",
-                              ),
-                              P(
-                                text:
-                                    '''Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmodtempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo''',
-                              )
-                            ],
-                          )
-                        ],
-                      )
-                    ],
+                  PreViewItem(
+                      label: 'Item',
+                      value:'123fsafsafsafsfsafsfssfwerrqreqwrwrsafsaffsfsfsfsfsfsfsfsfsf'
                   )
                 ],
               ),
+              footer: PreViewFooter(
+                children: [
+                  PreViewButton(text: "sdfs",),
+                  PreViewButton(text: "sfds",primary: true,onPressed: (){},)
+                ],
+              ),
+            ),
+            buildCells(context),
+            WeUIApp(child:
+            Footer(
+              // text: "sdfsfd",
+              links: [Link(text: "sdfds"), Link(text: "sdfsf")],
+            ),),
+            Article(
+              children: <Widget>[
+                H1(
+                  text: "大标题",
+                ),
+                Section(
+                  children: <Widget>[
+                    H2(text: "章标题"),
+                    Section(
+                      children: <Widget>[
+                        H3(
+                          text: "节标题",
+                        ),
+                        P(
+                          text:
+                              '''Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmodtempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo''',
+                        )
+                      ],
+                    )
+                  ],
+                )
+              ],
             )
           ],
         ),
+      )
+    ],
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          WDialog.show(context,
-              title: "tafds",
-              content: "content",
-              actions: [
-                DialogActions(
-                    text: "cancel",
-                    onPressed: () {
-                      print("cancel");
-                    }),
-                DialogActions(
-                    text: "ok",
-                    onPressed: () {
-                      print("ok");
-                    })
-              ],
-              platform: TargetPlatform.android);
-        },
-        tooltip: 'Increment',
-        child: Icon(Icons.add),
+    onPressed: () {
+      WDialog.show(context,
+          title: "tafds",
+          content: "content",
+          actions: [
+            DialogActions(
+                text: "cancel",
+                onPressed: () {
+                  print("cancel");
+                }),
+            DialogActions(
+                text: "ok",
+                onPressed: () {
+                  print("ok");
+                })
+          ],
+          platform: TargetPlatform.android);
+    },
+    tooltip: 'Increment',
+    child: Icon(Icons.add),
       ), // This trailing comma makes auto-formatting nicer for build methods.
-    ));
+    );
   }
 
   Cells buildCells(BuildContext context) {
