@@ -13,8 +13,8 @@ class ButtonExample extends StatelessWidget {
         child: ListView(
           children: <Widget>[
             Button(),
-            Button(type: ButtonType.btnWarn),
-            Button(type: ButtonType.btnPrimary),
+            Button(type: ButtonType.warn),
+            Button(type: ButtonType.primay),
             Button(loading: true),
             Button(disabled: true),
             Button(text: "按钮"),
