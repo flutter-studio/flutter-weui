@@ -31,7 +31,7 @@ Color weuiLinkColorDefault(Brightness brightness) =>
 // background
 Color weuiBgColorDefault(Brightness brightness) => _themeColor(brightness,Light.WEUI_BG_0,Dark.WEUI_BG_0);
 Color weuiBgColorPrimary(Brightness brightness) => _themeColor(brightness,Light.WEUI_BG_1,Dark.WEUI_BG_1);
-
+Color weuiBg2(Brightness brightness) => _themeColor(brightness,Light.WEUI_BG_2,Dark.WEUI_BG_2);
 // line
 Color weuiLineColorLight(Brightness brightness) => _themeColor(brightness,Light.WEUI_FG_3,Dark.WEUI_FG_3);
 Color weuiLineColorDark(Brightness brightness) => _themeColor(brightness,Light.WEUI_FG_2,Dark.WEUI_FG_2);

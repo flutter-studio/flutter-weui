@@ -1,88 +1,98 @@
 import 'package:flutter/material.dart';
 import 'touchable.dart';
+import 'line.dart';
+import 'base/theme.dart';
 
-class Info extends StatelessWidget {
-  Info({Key key, this.children}) : super(key: key);
-  final List<Widget> children;
+class MediaBoxTitle extends StatelessWidget {
+  MediaBoxTitle({
+    this.child,
+  });
+  final Widget child;
+  @override
+  Widget build(BuildContext context) {
+    return DefaultTextStyle(
+      style: TextStyle(
+          fontSize: 17,
+          fontWeight: FontWeight.w400,
+          height: 1.4,
+          color: WeUITheme.of(context).textTitleColor),
+      child: child,
+    );
+  }
+}
+
+class MediaBoxDesc extends StatelessWidget {
+  MediaBoxDesc({
+    this.child,
+  });
+  final Widget child;
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(top: 10),
-      child: Row(
-        children: children,
+      padding: const EdgeInsets.only(top: 4),
+      child: DefaultTextStyle(
+        style: TextStyle(
+          fontSize: 14,
+          fontWeight: FontWeight.w400,
+          height: 1.4,
+          color: WeUITheme.of(context).textTipsColor
+        ),
+        child: child,
       ),
     );
   }
 }
 
-class Meta extends StatelessWidget {
-  Meta({Key key, this.text}) : super(key: key);
-  final String text;
+class MediaBoxAppMsg extends StatelessWidget {
+  MediaBoxAppMsg({
+    this.header,
+    this.body,
+  });
+  final Widget header;
+  final Widget body;
   @override
   Widget build(BuildContext context) {
-    TextStyle textStyle = TextStyle(color: Color(0xFFCECECE), fontSize: 13);
-    return Padding(
-      padding: const EdgeInsets.only(right: 8),
-      child: Text(text, style: textStyle),
+    return Row(
+      children: <Widget>[
+        Container(
+          width: 60,
+          height: 60,
+          margin: const EdgeInsets.only(right: 16),
+          child: header,
+        ),
+        Expanded(
+          child: body ?? SizedBox(),
+        )
+      ],
     );
   }
 }
 
-class MetaExtra extends StatelessWidget {
-  MetaExtra({Key key, this.text}) : super(key: key);
-  final String text;
-  @override
-  Widget build(BuildContext context) {
-    TextStyle textStyle = TextStyle(color: Color(0xFFCECECE), fontSize: 13);
-    return Container(
-      padding: const EdgeInsets.only(left: 8),
-      decoration: BoxDecoration(border: Border(left: BorderSide(color: const Color(0xffcecece)))),
-      child: Text(text, style: textStyle),
-    );
-  }
-}
 
 class MediaBox extends StatelessWidget {
-  MediaBox({Key key, this.thumb, this.title = "", this.desc = "", this.info}) : super(key: key);
-  final Widget thumb;
-  final String title;
-  final String desc;
-  final Info info;
-
+  MediaBox({
+    this.onPress,
+    this.child,
+  });
+  final VoidCallback onPress;
+  final Widget child;
   @override
   Widget build(BuildContext context) {
-    TextStyle titleStyle = TextStyle(fontSize: 17, fontWeight: FontWeight.w400, color: Colors.black);
-    TextStyle descStyle = TextStyle(fontSize: 13, color: Color(0xFF808080));
     return TouchableHighlight(
-      child: Container(
-        padding: const EdgeInsets.all(15),
-        child: Column(
-          children: <Widget>[
-            Row(
-              children: <Widget>[
-                Offstage(
-                  child: Container(
-                    height: 60,
-                    width: 60,
-                    margin: const EdgeInsets.only(right: 10),
-                    child: thumb,
-                  ),
-                  offstage: thumb == null,
-                ),
-                Expanded(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: <Widget>[Text(title, style: titleStyle), Text(desc, style: descStyle)],
-                  ),
-                )
-              ],
-            ),
-            Offstage(
-              child: info,
-              offstage: info == null,
-            )
-          ],
-        ),
+      onPressed: onPress,
+      disabled: onPress == null,
+      activeColor: WeUITheme.of(context).bgActiveColor,
+      color: Colors.transparent,
+      activeStyle: TextStyle(color: Colors.black),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: <Widget>[
+          HorizontalLine(margin: EdgeInsets.only(left: 16)),
+          Padding(
+            padding: const EdgeInsets.all(16),
+            child: child,
+          )
+        ],
       ),
     );
   }

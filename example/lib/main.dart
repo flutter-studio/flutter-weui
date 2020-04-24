@@ -10,7 +10,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return WeUIApp(
-      theme: WeUIThemeData.dark(),
+      theme: WeUIThemeData.light(),
       child: MaterialApp(
         title: 'Flutter Demo',
         color: Colors.red,
@@ -68,93 +68,145 @@ class _MyHomePageState extends State<MyHomePage> {
       body: ListView(
     //physics: BouncingScrollPhysics(),
     children: <Widget>[
-      Center(
-        // Center is a layout widget. It takes a single child and positions it
-        // in the middle of the parent.
-        child: Column(
+      Column(
           mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-             Button(text: 'dark',onPress: dark),
-             Button(type: ButtonType.primay,text: 'light',onPress: light,),
-             Button(type: ButtonType.warn,onPress: (){
-               Toast.success(context, "dfsdf");
-             },),
-               Button(loading: true,),
-             Button(type: ButtonType.primay,loading: true,),
-             Button(type: ButtonType.warn,loading: true,),
-                       Button(disabled: true,),
-             Button(type: ButtonType.primay,disabled: true,),
-             Button(type: ButtonType.warn,onPress: (){
-               Toast.close(context);
-             },),
-             Button(mini:true,onPress: ()async{
-               Toast.loading(context, "dsfsfd");
-               await Future.delayed(Duration(seconds: 2));
-               Toast.close(context);
-             }),
-            PreView(
-              header: PreViewHeader(
-                label: "Header",
-                value: "sdfs",
-              ),
-              body: PreViewBody(
-                children: [
-                  PreViewItem(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: <Widget>[
+           Button(text: 'dark',onPress: dark),
+           Button(type: ButtonType.primay,text: 'light',onPress: light,),
+           Button(type: ButtonType.warn,onPress: (){
+             Toast.success(context, "dfsdf");
+           },),
+             Button(loading: true,),
+           Button(type: ButtonType.primay,loading: true,),
+           Button(type: ButtonType.warn,loading: true,),
+                     Button(disabled: true,),
+           Button(type: ButtonType.primay,disabled: true,),
+           Button(type: ButtonType.warn,onPress: (){
+             Toast.close(context);
+           },),
+           Button(mini:true,onPress: ()async{
+             Toast.loading(context, "dsfsfd");
+             await Future.delayed(Duration(seconds: 2));
+             Toast.close(context);
+           }),
+          PreView(
+            header: PreViewHeader(
+              label: "Header",
+              value: "sdfs",
+            ),
+            body: PreViewBody(
+              children: [
+                PreViewItem(
+                  label: 'Item',
+                  value:'123'
+                ),
+                PreViewItem(
                     label: 'Item',
                     value:'123'
-                  ),
-                  PreViewItem(
-                      label: 'Item',
-                      value:'123'
-                  ),
-                  PreViewItem(
-                      label: 'Item',
-                      value:'123'
-                  ),
-                  PreViewItem(
-                      label: 'Item',
-                      value:'123fsafsafsafsfsafsfssfwerrqreqwrwrsafsaffsfsfsfsfsfsfsfsfsf'
-                  )
-                ],
-              ),
-              footer: PreViewFooter(
-                children: [
-                  PreViewButton(text: "sdfs",),
-                  PreViewButton(text: "sfds",primary: true,onPressed: (){},)
-                ],
-              ),
-            ),
-            buildCells(context),
-            WeUIApp(child:
-            Footer(
-              // text: "sdfsfd",
-              links: [Link(text: "sdfds"), Link(text: "sdfsf")],
-            ),),
-            Article(
-              children: <Widget>[
-                H1(
-                  text: "大标题",
                 ),
-                Section(
-                  children: <Widget>[
-                    H2(text: "章标题"),
-                    Section(
-                      children: <Widget>[
-                        H3(
-                          text: "节标题",
-                        ),
-                        P(
-                          text:
-                              '''Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmodtempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo''',
-                        )
-                      ],
-                    )
-                  ],
+                PreViewItem(
+                    label: 'Item',
+                    value:'123'
+                ),
+                PreViewItem(
+                    label: 'Item',
+                    value:'123fsafsafsafsfsafsfssfwerrqreqwrwrsafsaffsfsfsfsfsfsfsfsfsf'
                 )
               ],
-            )
-          ],
-        ),
+            ),
+            footer: PreViewFooter(
+              children: [
+                PreViewButton(text: "sdfs",),
+                PreViewButton(text: "sfds",primary: true,onPressed: (){},)
+              ],
+            ),
+          ),
+          Panel(
+            header: PanelHeader(child: Text('文字列表组合'),
+            ),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: <Widget>[
+                MediaBox(
+                  onPress:(){},
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: <Widget>[
+                      MediaBoxTitle(
+                        child: Text('标题1'),
+                      ),
+                      MediaBoxDesc(
+                        child: Text("各种描述各种描述各种描述各种描述各种描述各种描述各种描述各种描述各种描述各种描述各种描述各种描述各种描述各种描述各种描述各种描述"),
+                      )
+                    ],
+                  ),
+                ),
+                MediaBox(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: <Widget>[
+                      MediaBoxTitle(
+                        child: Text('标题1'),
+                      ),
+                      MediaBoxDesc(
+                        child: Text("各种描述各种描述各种描述各种描述各种描述各种描述各种描述各种描述各种描述各种描述各种描述各种描述各种描述各种描述各种描述各种描述"),
+                      )
+                    ],
+                  ),
+                ),
+                MediaBox(
+                  child: MediaBoxAppMsg(
+                    header: Container(
+                      width: double.infinity,
+                      height: double.infinity,
+                      color: Colors.grey,
+                    ),
+                    body: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: <Widget>[
+                        MediaBoxTitle(
+                          child: Text('标题1'),
+                        ),
+                        MediaBoxDesc(
+                          child: Text("描述各种描述各种描述各种描述各种描述各种描述各种描述各种描述各种描述"),
+                        )
+                      ],
+                    ),
+                  )
+                )
+              ],
+            ),
+          ),
+          WeUIApp(child:
+          Footer(
+            // text: "sdfsfd",
+            links: [Link(text: "sdfds"), Link(text: "sdfsf")],
+          ),),
+          Article(
+            children: <Widget>[
+              H1(
+                text: "大标题",
+              ),
+              Section(
+                children: <Widget>[
+                  H2(text: "章标题"),
+                  Section(
+                    children: <Widget>[
+                      H3(
+                        text: "节标题",
+                      ),
+                      P(
+                        text:
+                            '''Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmodtempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo''',
+                      )
+                    ],
+                  )
+                ],
+              )
+            ],
+          )
+        ],
       )
     ],
       ),

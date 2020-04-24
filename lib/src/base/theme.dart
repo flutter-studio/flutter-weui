@@ -160,6 +160,7 @@ class WeUIThemeData extends Diagnosticable {
     WeUIDialogThemeData dialogTheme,
     Color foregroundHalf,
     Color toastBgColor,
+    Color bg2,
   }) {
     brightness ??= Brightness.light;
     textTipsColor ??= weuiTextColorTips(brightness);
@@ -181,6 +182,7 @@ class WeUIThemeData extends Diagnosticable {
     dialogTheme ??= WeUIDialogThemeData(brightness: brightness);
     foregroundHalf ??= weuiFgHalf(brightness);
     toastBgColor ??= weuiToastBgColor(brightness);
+    bg2 ??= weuiBg2(brightness);
     return WeUIThemeData.raw(
       brightness: brightness,
       textTipsColor: textTipsColor,
@@ -202,6 +204,7 @@ class WeUIThemeData extends Diagnosticable {
       dialogTheme: dialogTheme,
       foregroundHalf: foregroundHalf,
       toastBgColor: toastBgColor,
+      bg2: bg2,
     );
   }
 
@@ -226,6 +229,7 @@ class WeUIThemeData extends Diagnosticable {
     WeUIDialogThemeData dialogTheme,
     Color foregroundHalf,
     Color toastBgColor,
+    Color bg2,
   }) {
     return WeUIThemeData.raw(
       brightness: brightness ?? this.brightness,
@@ -248,6 +252,7 @@ class WeUIThemeData extends Diagnosticable {
       dialogTheme: dialogTheme,
       foregroundHalf: foregroundHalf,
       toastBgColor: toastBgColor,
+      bg2: bg2,
     );
   }
 
@@ -272,6 +277,7 @@ class WeUIThemeData extends Diagnosticable {
     @required this.dialogTheme,
     @required this.foregroundHalf,
     @required this.toastBgColor,
+    @required this.bg2,
   });
   final Color primaryColor;
   final Color warnColor;
@@ -293,6 +299,7 @@ class WeUIThemeData extends Diagnosticable {
   final WeUIDialogThemeData dialogTheme;
   final Color foregroundHalf;
   final Color toastBgColor;
+  final Color bg2;
 
   factory WeUIThemeData.light() => WeUIThemeData(brightness: Brightness.light);
 
