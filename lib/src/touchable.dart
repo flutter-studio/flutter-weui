@@ -8,12 +8,16 @@ class TouchableHighlight extends StatefulWidget {
     this.onPressed,
     this.color = const Color(0xFFFFFFFF),
     this.activeColor = const Color(0xFFDEDEDE),
+    this.style = const TextStyle(),
+    this.activeStyle = const TextStyle(),
     this.disabled = false,
   }) : super(key: key);
 
   final Widget child;
   final VoidCallback onPressed;
   final Color color;
+  final TextStyle style;
+  final TextStyle activeStyle;
   final Color activeColor;
   final bool disabled;
   @override
@@ -25,14 +29,17 @@ class _TouchableHighlightState extends State<TouchableHighlight> {
   initState() {
     super.initState();
     bg = widget.color;
+    _style = widget.style;
   }
 
   Color bg;
+  TextStyle _style;
 
   _onTapDown(e) {
     if (widget.disabled) return;
     setState(() {
       bg = widget.activeColor;
+      _style = widget.activeStyle;
     });
   }
 
@@ -40,6 +47,7 @@ class _TouchableHighlightState extends State<TouchableHighlight> {
     if (widget.disabled) return;
     setState(() {
       bg = widget.color;
+      _style = widget.style;
     });
     if (widget.onPressed != null) widget.onPressed();
   }
@@ -48,6 +56,7 @@ class _TouchableHighlightState extends State<TouchableHighlight> {
     if (widget.disabled) return;
     setState(() {
       bg = widget.color;
+      _style = widget.style;
     });
   }
 
@@ -60,7 +69,10 @@ class _TouchableHighlightState extends State<TouchableHighlight> {
       onTapCancel: _onTapCancel,
       child: Container(
         color: bg,
-        child: widget.child,
+        child: DefaultTextStyle(
+          style: _style,
+          child: widget.child,
+        ),
       ),
     );
   }
